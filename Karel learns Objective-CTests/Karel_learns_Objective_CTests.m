@@ -7,6 +7,10 @@
 //
 
 #import "Karel_learns_Objective_CTests.h"
+#import "KCHeadedPosition.h"
+#import "KCSize.h"
+#import "KCKarel.h"
+#import "KCWorld.h"
 
 @implementation Karel_learns_Objective_CTests
 
@@ -14,7 +18,7 @@
 {
     [super setUp];
     
-    // Set-up code here.
+    srand(10);
 }
 
 - (void)tearDown
@@ -24,9 +28,11 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    STFail(@"Unit tests are not implemented yet in Karel learns Objective-CTests");
-}
+
+
+
+
+
+
 
 @end
