@@ -22,22 +22,7 @@ static NSString * KCWorldChangedNotification = @"KCWorldChangedNotification";
 
 @interface KCWorld : NSObject
 
-#pragma mark creation
 
-//format:
-//name the property you want to define and in parenthesis the value you want to use
-//@"propertyName(propertyContent) propertyName (propertyContent) ...."
-//note: spacing outside content does not matter
-//note: spacing inside content matters!
-//NSString * example = @"size(5 4) speed(0.5) karel(1 4 e KCUnlimited) walls(1 4 s, 2 4 s, 3 4 s, 4 4 w, 4 4 n, 5 4 n) beepers(1 4 1, 2 6 1)";
-+ (KCWorld*)worldFromString:(NSString*)description;
-
-
-//format: @"x1 y1 s, x2 y2 e, x3 y3 s, ..."
-+ (NSSet*)wallPositionsFromString:(NSString *)description;
-
-//format: @"x1 y1 count1, x2 y2 count2, ..."
-+ (NSDictionary*)beeperDictionaryFromString:(NSString*)description;
 
 #pragma mark world properties
 
@@ -60,7 +45,7 @@ static NSString * KCWorldChangedNotification = @"KCWorldChangedNotification";
 //contains KCHeadedPositions
 @property (nonatomic, strong) NSSet * positionsOfWalls;
 
-
+- (void)addWallBorders;
 
 
 #pragma mark turns
@@ -72,12 +57,36 @@ static NSString * KCWorldChangedNotification = @"KCWorldChangedNotification";
 @property (nonatomic) NSTimeInterval turnLength;
 
 
-#pragma mark modify karel
+#pragma mark modifying karel
 
 //nil if karel not part of world
 - (KCHeadedPosition*)positionOfKarel:(KCKarel*)karel;
-
+//empty if none in world
+@property (readonly) NSSet * karelsInWorld;
+//arguments must be non-nil
 - (void)addKarel:(KCKarel*)karel atPosition:(KCHeadedPosition*)position;
 //karel must be added first
 - (void)setPosition:(KCHeadedPosition*)position ofKarel:(KCKarel*)karel;
+
+
+#pragma mark creation
+
+//searches the bundle for a file with the nameOfWorld and calls [world fromString] on the string created from the file
++ (KCWorld*)worldWithName:(NSString*)nameOfWorld;
+
+//format:
+//name the property you want to define and in parenthesis the value you want to use
+//@"propertyName(propertyContent) propertyName (propertyContent) ...."
+//note: spacing outside content does not matter
+//note: spacing inside content matters!
+//the class argument is optional
+//NSString * example = @"size(5 4) speed(0.5) karel(position[1 4 e] beeperbag[KCUnlimited] class[KCBeeperPickingKarel]) walls(1 4 s, 2 4 s, 3 4 s, 4 4 w, 4 4 n, 5 4 n) beepers(1 4 1, 2 6 1)";
++ (KCWorld*)worldFromString:(NSString*)description;
+
+
+//format: @"x1 y1 s, x2 y2 e, x3 y3 s, ..."
++ (NSSet*)wallPositionsFromString:(NSString *)description;
+
+//format: @"x1 y1 count1, x2 y2 count2, ..."
++ (NSDictionary*)beeperDictionaryFromString:(NSString*)description;
 @end

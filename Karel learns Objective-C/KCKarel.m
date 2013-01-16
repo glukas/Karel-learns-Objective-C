@@ -34,18 +34,20 @@
 
 - (void)turnLeft
 {
-    [self.world setPosition:[[self front] rotateLeft] ofKarel:self];
     [self.world nextTurn];
+    [self.world setPosition:[[self front] rotateLeft] ofKarel:self];
+    
 }
 
 - (void)move
 {
+    [self.world nextTurn];
     KCHeadedPosition * currentPosition = [self front];
     if ([self.world isWallAtHeadedPosition:currentPosition]) {
         NSAssert(false, @"moved into wall!");
     }
     [self.world setPosition:[currentPosition moveInDirectionOfOrientation] ofKarel:self];
-    [self.world nextTurn];
+    
 }
 
 #pragma mark beepers
@@ -62,19 +64,21 @@
     } else {
         [self.world setNumberOfBeepers:count-1 atPosition:here];
     }
-    [self.world nextTurn];
+   
 }
 
 - (void)putBeeper
 {
     if (self.numberOfBeepersInBag != KCUnlimited) {
         if (self.numberOfBeepersInBag > 0) {
-             self.numberOfBeepersInBag--;
+            self.numberOfBeepersInBag--;
         } else {
             NSAssert(false, @"no beepers in bag, put tried to put beeper");
         }
     }
-    [self.world nextTurn];
+    KCPosition * here = [self here];
+    [self.world setNumberOfBeepers:[self.world numberOfBeepersAtPosition:here]+1 atPosition:here];
+    
 }
 
 - (BOOL)beepersInBag
@@ -89,7 +93,7 @@
 
 - (BOOL)beepersPresent
 {
-    return [self.world numberOfBeepersAtPosition:[self front]];
+    return [self.world numberOfBeepersAtPosition:[self here]] > 0;
 }
 
 - (BOOL)noBeepersPresent

@@ -15,13 +15,31 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWm-8H-TDp" customClass="KCWorldView">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1A-oP-fRN">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="209" id="Eae-Z0-EbD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Run Karel RUN!">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="runButtonPressed:" destination="2" eventType="touchUpInside" id="QVk-2q-gPC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="IWm-8H-TDp" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="ALG-Y4-zOV"/>
                             <constraint firstItem="IWm-8H-TDp" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="FFd-fi-eGG"/>
+                            <constraint firstAttribute="bottom" secondItem="H1A-oP-fRN" secondAttribute="bottom" constant="12" id="MxW-Kr-fCf"/>
                             <constraint firstItem="IWm-8H-TDp" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="hHT-e0-ztE"/>
                             <constraint firstItem="IWm-8H-TDp" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="myE-cD-NAD"/>
+                            <constraint firstItem="H1A-oP-fRN" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="12" id="ozq-fP-ctV"/>
                         </constraints>
                     </view>
                     <connections>
@@ -30,12 +48,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-59" y="33"/>
         </scene>
     </scenes>
     <classes>
         <class className="KCViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/KCViewController.h"/>
             <relationships>
+                <relationship kind="action" name="runButtonPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="worldView" candidateClass="KCWorldView"/>
             </relationships>
         </class>

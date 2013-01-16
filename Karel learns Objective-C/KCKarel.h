@@ -19,7 +19,6 @@ static KCCount KCUnlimited = INT_MAX;
 
 - (id)initWithWorld:(KCWorld *)world numberOfBeepers:(KCCount)count;
 
-
 //subclass Karel and overwrite run
 //to run karel, execute on a background thread, otherwise your main thread will be blocked
 - (void)run;

@@ -13,6 +13,8 @@
 - (id)initWithWidth:(int)width height:(int)height
 {
     self = [super init];
+    NSAssert(width > 0, @"width must be positive");
+    NSAssert(height > 0, @"height must be positive");
     if (self) {
         _width = width;
         _height = height;
