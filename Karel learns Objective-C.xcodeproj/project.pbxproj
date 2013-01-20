@@ -61,6 +61,8 @@
 		80C1784A16A74A2D0068B006 /* KCWorldEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784816A74A2D0068B006 /* KCWorldEditorViewController.m */; };
 		80C1784D16A7664C0068B006 /* KCWorldPropertySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784C16A7664C0068B006 /* KCWorldPropertySelectionViewController.m */; };
 		80C1784E16A7664C0068B006 /* KCWorldPropertySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784C16A7664C0068B006 /* KCWorldPropertySelectionViewController.m */; };
+		80EC223516ACA1AB00C8E764 /* ArtistKarel1.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 80EC223416ACA1AB00C8E764 /* ArtistKarel1.kcw */; };
+		80EC223816ACA23100C8E764 /* ArtistKarel2.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 80EC223716ACA23100C8E764 /* ArtistKarel2.kcw */; };
 		80FFC7D316A5EA4600756027 /* KCWorldTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D216A5EA4600756027 /* KCWorldTest.m */; };
 		80FFC7D616A5EC0D00756027 /* KCPositionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D516A5EC0D00756027 /* KCPositionTest.m */; };
 		80FFC7D916A5F1C200756027 /* KCHeadedPositionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D816A5F1C200756027 /* KCHeadedPositionTest.m */; };
@@ -150,6 +152,8 @@
 		80C1784816A74A2D0068B006 /* KCWorldEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldEditorViewController.m; sourceTree = "<group>"; };
 		80C1784B16A7664C0068B006 /* KCWorldPropertySelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWorldPropertySelectionViewController.h; sourceTree = "<group>"; };
 		80C1784C16A7664C0068B006 /* KCWorldPropertySelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldPropertySelectionViewController.m; sourceTree = "<group>"; };
+		80EC223416ACA1AB00C8E764 /* ArtistKarel1.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ArtistKarel1.kcw; path = ../ArtistKarel1.kcw; sourceTree = "<group>"; };
+		80EC223716ACA23100C8E764 /* ArtistKarel2.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ArtistKarel2.kcw; path = ../ArtistKarel2.kcw; sourceTree = "<group>"; };
 		80FFC7D116A5EA4600756027 /* KCWorldTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWorldTest.h; sourceTree = "<group>"; };
 		80FFC7D216A5EA4600756027 /* KCWorldTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldTest.m; sourceTree = "<group>"; };
 		80FFC7D416A5EC0D00756027 /* KCPositionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCPositionTest.h; sourceTree = "<group>"; };
@@ -352,6 +356,8 @@
 		8094F58816AB6C5900675294 /* Worlds */ = {
 			isa = PBXGroup;
 			children = (
+				80EC223416ACA1AB00C8E764 /* ArtistKarel1.kcw */,
+				80EC223716ACA23100C8E764 /* ArtistKarel2.kcw */,
 				8094F59316AB6E8300675294 /* ColorByNumbersKarel2.kcw */,
 				8094F59416AB6E8300675294 /* ColorByNumbersKarel1.kcw */,
 				8094F58B16AB6CB700675294 /* StoneMasonWorld.kcw */,
@@ -477,6 +483,8 @@
 				8094F58C16AB6CB700675294 /* StoneMasonWorld.kcw in Resources */,
 				8094F59516AB6E8400675294 /* ColorByNumbersKarel2.kcw in Resources */,
 				8094F59616AB6E8400675294 /* ColorByNumbersKarel1.kcw in Resources */,
+				80EC223516ACA1AB00C8E764 /* ArtistKarel1.kcw in Resources */,
+				80EC223816ACA23100C8E764 /* ArtistKarel2.kcw in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
