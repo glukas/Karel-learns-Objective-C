@@ -7,7 +7,7 @@
 //
 
 #import "KCWorld.h"
-#import "KCStoneMasonKarel.h"
+
 @interface KCWorld()
 //values: KCHeadedPosition key: KCKarel objects
 @property (nonatomic, strong) NSDictionary * karelPositions;
