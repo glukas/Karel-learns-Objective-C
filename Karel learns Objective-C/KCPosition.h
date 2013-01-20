@@ -11,10 +11,11 @@
 @interface KCPosition : NSObject <NSCopying>
 
 //designated initializer
-//precondition: x > 0 && y > 0
+
 - (id)initWithX:(NSUInteger)x Y:(NSUInteger)y;
 
 //format: @"x y"
+//precondition: x > 0 && y > 0
 + (KCPosition*)positionFromString:(NSString*)description;
 
 //first two values are relevant, rest is ignored
