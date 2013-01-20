@@ -8,6 +8,9 @@
 
 #import "KCViewController.h"
 #import "KCWorldLibrary.h"
+
+static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
+
 @interface KCViewController () 
 
 @property (nonatomic) BOOL karelRunning;
@@ -77,6 +80,14 @@
 
 - (void)worldSelectionViewController:(KCWorldSelectionViewController *)controller didSelectWorldWithName:(NSString *)world
 {
+    [self loadWorldWithName:world];
+    [[NSUserDefaults standardUserDefaults] setObject:world forKey:KCLastWorldOpenedUserDefaultsKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+- (void)loadWorldWithName:(NSString *)world
+{
     [self.world removeKarel:self.karel];
     self.world = [KCWorld worldWithName:world];
     if (!self.world) {
@@ -93,6 +104,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSString * lastWorldOpened = [[NSUserDefaults standardUserDefaults] objectForKey:KCLastWorldOpenedUserDefaultsKey];
+    if (lastWorldOpened) {
+        [self loadWorldWithName:lastWorldOpened];
+    }
     [self.worldView reloadWorld];
 }
 
@@ -112,21 +127,6 @@
         [self.worldView reloadSquareAtPosition:position];
     }
     [self.worldView reloadKarel];
-}
-
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    //setup world
-    /*
-    if (!self.world) {
-        self.world = [KCWorld worldWithName:@"StoneMasonWorld"];
-        [self.world addWallBorders];
-        //setup karel
-        self.karel = [[self.world karelsInWorld] anyObject];
-    }*/
-    
 }
 
 
