@@ -47,6 +47,20 @@
 		80931BF116A4C8D700F59C30 /* KCKarelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80931BF016A4C8D700F59C30 /* KCKarelView.m */; };
 		80931BF316A4C9A300F59C30 /* karel_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 80931BF216A4C9A300F59C30 /* karel_128.png */; };
 		80931BF516A4CAD900F59C30 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80931BF416A4CAD900F59C30 /* QuartzCore.framework */; };
+		8094F56B16AB04D200675294 /* KCSuperKarel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8094F56A16AB04D200675294 /* KCSuperKarel.m */; };
+		8094F58A16AB6CB100675294 /* beeperPickingKarel.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 8094F58916AB6CB100675294 /* beeperPickingKarel.kcw */; };
+		8094F58C16AB6CB700675294 /* StoneMasonWorld.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 8094F58B16AB6CB700675294 /* StoneMasonWorld.kcw */; };
+		8094F58F16AB6D8400675294 /* KCArtistKarel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8094F58E16AB6D8400675294 /* KCArtistKarel.m */; };
+		8094F59216AB6E5B00675294 /* KCColorByNumbersKarel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8094F59116AB6E5B00675294 /* KCColorByNumbersKarel.m */; };
+		8094F59516AB6E8400675294 /* ColorByNumbersKarel2.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 8094F59316AB6E8300675294 /* ColorByNumbersKarel2.kcw */; };
+		8094F59616AB6E8400675294 /* ColorByNumbersKarel1.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 8094F59416AB6E8300675294 /* ColorByNumbersKarel1.kcw */; };
+		80C1784116A715060068B006 /* KCWorldSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784016A715060068B006 /* KCWorldSelectionViewController.m */; };
+		80C1784516A73CB70068B006 /* KCWorldLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784416A73CB70068B006 /* KCWorldLibrary.m */; };
+		80C1784616A73CB70068B006 /* KCWorldLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784416A73CB70068B006 /* KCWorldLibrary.m */; };
+		80C1784916A74A2D0068B006 /* KCWorldEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784816A74A2D0068B006 /* KCWorldEditorViewController.m */; };
+		80C1784A16A74A2D0068B006 /* KCWorldEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784816A74A2D0068B006 /* KCWorldEditorViewController.m */; };
+		80C1784D16A7664C0068B006 /* KCWorldPropertySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784C16A7664C0068B006 /* KCWorldPropertySelectionViewController.m */; };
+		80C1784E16A7664C0068B006 /* KCWorldPropertySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784C16A7664C0068B006 /* KCWorldPropertySelectionViewController.m */; };
 		80FFC7D316A5EA4600756027 /* KCWorldTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D216A5EA4600756027 /* KCWorldTest.m */; };
 		80FFC7D616A5EC0D00756027 /* KCPositionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D516A5EC0D00756027 /* KCPositionTest.m */; };
 		80FFC7D916A5F1C200756027 /* KCHeadedPositionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D816A5F1C200756027 /* KCHeadedPositionTest.m */; };
@@ -55,9 +69,7 @@
 		80FFC7E016A5FB8A00756027 /* KCBeeperPickingKarel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7DE16A5FB8A00756027 /* KCBeeperPickingKarel.m */; };
 		80FFC7E416A60A2F00756027 /* KCKarelConsistencyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7E316A60A2F00756027 /* KCKarelConsistencyTest.m */; };
 		80FFC7E816A6305100756027 /* KCStoneMasonKarel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7E716A6305100756027 /* KCStoneMasonKarel.m */; };
-		80FFC7EA16A635E600756027 /* StoneMasonWorld.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 80FFC7E916A635E600756027 /* StoneMasonWorld.kcw */; };
 		80FFC7EB16A63C5900756027 /* KCStoneMasonKarel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7E716A6305100756027 /* KCStoneMasonKarel.m */; };
-		80FFC7ED16A6445600756027 /* beeperPickingKarel.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 80FFC7EC16A6445600756027 /* beeperPickingKarel.kcw */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,18 +120,36 @@
 		808D4A3B16A38A6800D7E8D9 /* KCKarel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCKarel.m; sourceTree = "<group>"; };
 		808D4A3E16A38F8900D7E8D9 /* KCSquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCSquareView.h; sourceTree = "<group>"; };
 		808D4A3F16A38F8900D7E8D9 /* KCSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCSquareView.m; sourceTree = "<group>"; };
-		80931BD616A4614D00F59C30 /* square_128_beeper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = square_128_beeper.png; path = ../../square_128_beeper.png; sourceTree = "<group>"; };
-		80931BD716A4614D00F59C30 /* square_128_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = square_128_bg.png; path = ../../square_128_bg.png; sourceTree = "<group>"; };
+		80931BD616A4614D00F59C30 /* square_128_beeper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = square_128_beeper.png; path = ../square_128_beeper.png; sourceTree = "<group>"; };
+		80931BD716A4614D00F59C30 /* square_128_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = square_128_bg.png; path = ../square_128_bg.png; sourceTree = "<group>"; };
 		80931BE516A4694000F59C30 /* KCMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMatrix.h; sourceTree = "<group>"; };
 		80931BE616A4694000F59C30 /* KCMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMatrix.m; sourceTree = "<group>"; };
 		80931BE816A4830300F59C30 /* KCWallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWallView.h; sourceTree = "<group>"; };
 		80931BE916A4830300F59C30 /* KCWallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWallView.m; sourceTree = "<group>"; };
-		80931BEB16A4BDE700F59C30 /* square_wall_landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = square_wall_landscape.png; path = ../../square_wall_landscape.png; sourceTree = "<group>"; };
-		80931BEC16A4BDE700F59C30 /* square_wall_portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = square_wall_portrait.png; path = ../../square_wall_portrait.png; sourceTree = "<group>"; };
+		80931BEB16A4BDE700F59C30 /* square_wall_landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = square_wall_landscape.png; path = ../square_wall_landscape.png; sourceTree = "<group>"; };
+		80931BEC16A4BDE700F59C30 /* square_wall_portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = square_wall_portrait.png; path = ../square_wall_portrait.png; sourceTree = "<group>"; };
 		80931BEF16A4C8D700F59C30 /* KCKarelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCKarelView.h; sourceTree = "<group>"; };
 		80931BF016A4C8D700F59C30 /* KCKarelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCKarelView.m; sourceTree = "<group>"; };
-		80931BF216A4C9A300F59C30 /* karel_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = karel_128.png; path = ../../karel_128.png; sourceTree = "<group>"; };
+		80931BF216A4C9A300F59C30 /* karel_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = karel_128.png; path = ../karel_128.png; sourceTree = "<group>"; };
 		80931BF416A4CAD900F59C30 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8094F56916AB04D200675294 /* KCSuperKarel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCSuperKarel.h; sourceTree = "<group>"; };
+		8094F56A16AB04D200675294 /* KCSuperKarel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCSuperKarel.m; sourceTree = "<group>"; };
+		8094F58916AB6CB100675294 /* beeperPickingKarel.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beeperPickingKarel.kcw; path = ../beeperPickingKarel.kcw; sourceTree = "<group>"; };
+		8094F58B16AB6CB700675294 /* StoneMasonWorld.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = StoneMasonWorld.kcw; path = ../StoneMasonWorld.kcw; sourceTree = "<group>"; };
+		8094F58D16AB6D8400675294 /* KCArtistKarel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCArtistKarel.h; sourceTree = "<group>"; };
+		8094F58E16AB6D8400675294 /* KCArtistKarel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCArtistKarel.m; sourceTree = "<group>"; };
+		8094F59016AB6E5B00675294 /* KCColorByNumbersKarel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCColorByNumbersKarel.h; sourceTree = "<group>"; };
+		8094F59116AB6E5B00675294 /* KCColorByNumbersKarel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCColorByNumbersKarel.m; sourceTree = "<group>"; };
+		8094F59316AB6E8300675294 /* ColorByNumbersKarel2.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ColorByNumbersKarel2.kcw; path = ../ColorByNumbersKarel2.kcw; sourceTree = "<group>"; };
+		8094F59416AB6E8300675294 /* ColorByNumbersKarel1.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ColorByNumbersKarel1.kcw; path = ../ColorByNumbersKarel1.kcw; sourceTree = "<group>"; };
+		80C1783F16A715060068B006 /* KCWorldSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWorldSelectionViewController.h; sourceTree = "<group>"; };
+		80C1784016A715060068B006 /* KCWorldSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldSelectionViewController.m; sourceTree = "<group>"; };
+		80C1784316A73CB70068B006 /* KCWorldLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWorldLibrary.h; sourceTree = "<group>"; };
+		80C1784416A73CB70068B006 /* KCWorldLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldLibrary.m; sourceTree = "<group>"; };
+		80C1784716A74A2D0068B006 /* KCWorldEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWorldEditorViewController.h; sourceTree = "<group>"; };
+		80C1784816A74A2D0068B006 /* KCWorldEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldEditorViewController.m; sourceTree = "<group>"; };
+		80C1784B16A7664C0068B006 /* KCWorldPropertySelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWorldPropertySelectionViewController.h; sourceTree = "<group>"; };
+		80C1784C16A7664C0068B006 /* KCWorldPropertySelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldPropertySelectionViewController.m; sourceTree = "<group>"; };
 		80FFC7D116A5EA4600756027 /* KCWorldTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWorldTest.h; sourceTree = "<group>"; };
 		80FFC7D216A5EA4600756027 /* KCWorldTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldTest.m; sourceTree = "<group>"; };
 		80FFC7D416A5EC0D00756027 /* KCPositionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCPositionTest.h; sourceTree = "<group>"; };
@@ -134,8 +164,6 @@
 		80FFC7E316A60A2F00756027 /* KCKarelConsistencyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCKarelConsistencyTest.m; sourceTree = "<group>"; };
 		80FFC7E616A6305100756027 /* KCStoneMasonKarel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCStoneMasonKarel.h; sourceTree = "<group>"; };
 		80FFC7E716A6305100756027 /* KCStoneMasonKarel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCStoneMasonKarel.m; sourceTree = "<group>"; };
-		80FFC7E916A635E600756027 /* StoneMasonWorld.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = StoneMasonWorld.kcw; path = ../../../Week3/StoneMasonWorld.kcw; sourceTree = "<group>"; };
-		80FFC7EC16A6445600756027 /* beeperPickingKarel.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beeperPickingKarel.kcw; path = ../../../Week3/beeperPickingKarel.kcw; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,9 +226,9 @@
 		808D49E516A37CB100D7E8D9 /* Karel learns Objective-C */ = {
 			isa = PBXGroup;
 			children = (
+				808D4A1E16A37CC800D7E8D9 /* Views/UI */,
 				808D4A1D16A37CC100D7E8D9 /* Controllers */,
 				808D4A1F16A37CD400D7E8D9 /* Models */,
-				808D4A1E16A37CC800D7E8D9 /* Views/UI */,
 				808D49E616A37CB100D7E8D9 /* Supporting Files */,
 			);
 			path = "Karel learns Objective-C";
@@ -209,6 +237,7 @@
 		808D49E616A37CB100D7E8D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8094F58816AB6C5900675294 /* Worlds */,
 				808D49EE16A37CB100D7E8D9 /* KCAppDelegate.h */,
 				808D49EF16A37CB100D7E8D9 /* KCAppDelegate.m */,
 				808D49E716A37CB100D7E8D9 /* Karel learns Objective-C-Info.plist */,
@@ -256,6 +285,12 @@
 			children = (
 				808D49FD16A37CB100D7E8D9 /* KCViewController.h */,
 				808D49FE16A37CB100D7E8D9 /* KCViewController.m */,
+				80C1783F16A715060068B006 /* KCWorldSelectionViewController.h */,
+				80C1784016A715060068B006 /* KCWorldSelectionViewController.m */,
+				80C1784B16A7664C0068B006 /* KCWorldPropertySelectionViewController.h */,
+				80C1784C16A7664C0068B006 /* KCWorldPropertySelectionViewController.m */,
+				80C1784716A74A2D0068B006 /* KCWorldEditorViewController.h */,
+				80C1784816A74A2D0068B006 /* KCWorldEditorViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -287,8 +322,8 @@
 				808D4A2116A37CFE00D7E8D9 /* KCWorld.m */,
 				808D4A3A16A38A6800D7E8D9 /* KCKarel.h */,
 				808D4A3B16A38A6800D7E8D9 /* KCKarel.m */,
-				80FFC7EC16A6445600756027 /* beeperPickingKarel.kcw */,
-				80FFC7E916A635E600756027 /* StoneMasonWorld.kcw */,
+				80C1784316A73CB70068B006 /* KCWorldLibrary.h */,
+				80C1784416A73CB70068B006 /* KCWorldLibrary.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -314,13 +349,30 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		8094F58816AB6C5900675294 /* Worlds */ = {
+			isa = PBXGroup;
+			children = (
+				8094F59316AB6E8300675294 /* ColorByNumbersKarel2.kcw */,
+				8094F59416AB6E8300675294 /* ColorByNumbersKarel1.kcw */,
+				8094F58B16AB6CB700675294 /* StoneMasonWorld.kcw */,
+				8094F58916AB6CB100675294 /* beeperPickingKarel.kcw */,
+			);
+			name = Worlds;
+			sourceTree = "<group>";
+		};
 		80FFC7E116A5FB9000756027 /* Karels */ = {
 			isa = PBXGroup;
 			children = (
 				80FFC7DD16A5FB8A00756027 /* KCBeeperPickingKarel.h */,
 				80FFC7DE16A5FB8A00756027 /* KCBeeperPickingKarel.m */,
+				8094F56916AB04D200675294 /* KCSuperKarel.h */,
+				8094F56A16AB04D200675294 /* KCSuperKarel.m */,
 				80FFC7E616A6305100756027 /* KCStoneMasonKarel.h */,
 				80FFC7E716A6305100756027 /* KCStoneMasonKarel.m */,
+				8094F59016AB6E5B00675294 /* KCColorByNumbersKarel.h */,
+				8094F59116AB6E5B00675294 /* KCColorByNumbersKarel.m */,
+				8094F58D16AB6D8400675294 /* KCArtistKarel.h */,
+				8094F58E16AB6D8400675294 /* KCArtistKarel.m */,
 			);
 			name = Karels;
 			sourceTree = "<group>";
@@ -421,8 +473,10 @@
 				80931BED16A4BDE700F59C30 /* square_wall_landscape.png in Resources */,
 				80931BEE16A4BDE700F59C30 /* square_wall_portrait.png in Resources */,
 				80931BF316A4C9A300F59C30 /* karel_128.png in Resources */,
-				80FFC7EA16A635E600756027 /* StoneMasonWorld.kcw in Resources */,
-				80FFC7ED16A6445600756027 /* beeperPickingKarel.kcw in Resources */,
+				8094F58A16AB6CB100675294 /* beeperPickingKarel.kcw in Resources */,
+				8094F58C16AB6CB700675294 /* StoneMasonWorld.kcw in Resources */,
+				8094F59516AB6E8400675294 /* ColorByNumbersKarel2.kcw in Resources */,
+				8094F59616AB6E8400675294 /* ColorByNumbersKarel1.kcw in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +526,13 @@
 				80931BEA16A4830300F59C30 /* KCWallView.m in Sources */,
 				80931BF116A4C8D700F59C30 /* KCKarelView.m in Sources */,
 				80FFC7DF16A5FB8A00756027 /* KCBeeperPickingKarel.m in Sources */,
+				80C1784116A715060068B006 /* KCWorldSelectionViewController.m in Sources */,
+				80C1784516A73CB70068B006 /* KCWorldLibrary.m in Sources */,
+				80C1784916A74A2D0068B006 /* KCWorldEditorViewController.m in Sources */,
+				80C1784D16A7664C0068B006 /* KCWorldPropertySelectionViewController.m in Sources */,
+				8094F56B16AB04D200675294 /* KCSuperKarel.m in Sources */,
+				8094F58F16AB6D8400675294 /* KCArtistKarel.m in Sources */,
+				8094F59216AB6E5B00675294 /* KCColorByNumbersKarel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +555,9 @@
 				80FFC7E016A5FB8A00756027 /* KCBeeperPickingKarel.m in Sources */,
 				80FFC7E416A60A2F00756027 /* KCKarelConsistencyTest.m in Sources */,
 				80FFC7E816A6305100756027 /* KCStoneMasonKarel.m in Sources */,
+				80C1784616A73CB70068B006 /* KCWorldLibrary.m in Sources */,
+				80C1784A16A74A2D0068B006 /* KCWorldEditorViewController.m in Sources */,
+				80C1784E16A7664C0068B006 /* KCWorldPropertySelectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
