@@ -34,29 +34,27 @@
 
 - (void)turnLeft
 {
-    [self.world setPosition:[[self front] rotateLeft] ofKarel:self];
     [self.world nextTurn];
+    [self.world setPosition:[[self front] rotateLeft] ofKarel:self];
+    
 }
 
 - (void)move
 {
-    
+    [self.world nextTurn];
     KCHeadedPosition * currentPosition = [self front];
     if ([self.world isWallAtHeadedPosition:currentPosition]) {
         NSLog(@"position: %@", currentPosition);
         NSAssert(false, @"moved into wall!");
     }
     [self.world setPosition:[currentPosition moveInDirectionOfOrientation] ofKarel:self];
-    [self.world nextTurn];
 }
 
 #pragma mark painting
 
 - (void)paintCorner:(UIColor *)color
 {
-    
     [self.world setColor:color atPosition:[self here]];
-    [self.world nextTurn];
 }
 
 #pragma mark beepers
