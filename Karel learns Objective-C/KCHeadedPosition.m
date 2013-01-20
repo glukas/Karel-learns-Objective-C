@@ -27,7 +27,7 @@
     return self;
 }
 
-- (id)initWithX:(int)x Y:(int)y orientation:(KCOrientation)orientation
+- (id)initWithX:(NSUInteger)x Y:(NSUInteger)y orientation:(KCOrientation)orientation
 {
     self = [super initWithX:x Y:y];
     if (self) {
@@ -36,7 +36,7 @@
     } return self;
 }
 
-+ (KCHeadedPosition*)positionWithX:(int)x Y:(int)y orientation:(KCOrientation)orientation
++ (KCHeadedPosition*)positionWithX:(NSUInteger)x Y:(NSUInteger)y orientation:(KCOrientation)orientation
 {
     return [[self alloc] initWithX:x Y:y orientation:orientation];
 }

@@ -10,7 +10,7 @@
 
 @implementation KCPosition
 
-- (id)initWithX:(int)x Y:(int)y
+- (id)initWithX:(NSUInteger)x Y:(NSUInteger)y
 {
     self = [super init];
     NSAssert(x > 0, @"position positive");

@@ -11,7 +11,8 @@
 @interface KCPosition : NSObject <NSCopying>
 
 //designated initializer
-- (id)initWithX:(int)x Y:(int)y;
+//precondition: x > 0 && y > 0
+- (id)initWithX:(NSUInteger)x Y:(NSUInteger)y;
 
 //format: @"x y"
 + (KCPosition*)positionFromString:(NSString*)description;
@@ -23,7 +24,7 @@
 + (KCPosition*)positionFromArrayOfComponentStrings:(NSArray*)components;
 
 //note KCPosition is immutable
-@property (readonly) int x;
-@property (readonly) int y;
+@property (readonly) NSUInteger x;
+@property (readonly) NSUInteger y;
 
 @end

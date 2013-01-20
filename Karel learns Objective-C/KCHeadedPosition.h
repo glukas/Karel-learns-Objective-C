@@ -19,11 +19,11 @@ static KCOrientation east = @"e";
 @interface KCHeadedPosition : KCPosition
 
 //designated initializer
-- (id)initWithX:(int)x Y:(int)y orientation:(KCOrientation)orientation;
+- (id)initWithX:(NSUInteger)x Y:(NSUInteger)y orientation:(KCOrientation)orientation;
 
 - (id)initWithPosition:(KCPosition*)position orientation:(KCOrientation)orientation;
 
-+ (KCHeadedPosition*)positionWithX:(int)x Y:(int)y orientation:(KCOrientation)orientation;
++ (KCHeadedPosition*)positionWithX:(NSUInteger)x Y:(NSUInteger)y orientation:(KCOrientation)orientation;
 
 //returns nil if invalid
 + (KCHeadedPosition*)headedPositionFromString:(NSString *)description;

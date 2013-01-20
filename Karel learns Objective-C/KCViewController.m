@@ -69,7 +69,7 @@
 
 #pragma mark actions
 
-- (IBAction)runButtonPressed:(UIButton *)sender {
+- (IBAction)runButtonPressed:(id *)sender {
     [self.karel performSelectorInBackground:@selector(run) withObject:nil];
 }
 
