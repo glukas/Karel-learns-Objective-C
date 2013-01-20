@@ -19,6 +19,7 @@
 //first two values are relevant, rest is ignored
 //first value must be a string -> x component
 //second value must be a string -> y component
+//returns nil if invalid
 + (KCPosition*)positionFromArrayOfComponentStrings:(NSArray*)components;
 
 //note KCPosition is immutable

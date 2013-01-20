@@ -10,6 +10,8 @@
 #import "KCHeadedPosition.h"
 
 @interface KCSquareView : UIView
+//if the background color is nil, a background image is displayed
+//if the background color is any color, this color is used as a background instead
 
 //must be positive
 @property (nonatomic) int numberOfBeepers;

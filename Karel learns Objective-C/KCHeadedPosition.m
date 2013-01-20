@@ -8,6 +8,11 @@
 
 #import "KCHeadedPosition.h"
 
+
+@interface KCHeadedPosition()
+@property (nonatomic) NSUInteger p_hash;
+@end
+
 @implementation KCHeadedPosition
 
 
@@ -22,15 +27,26 @@
     return self;
 }
 
+- (id)initWithX:(int)x Y:(int)y orientation:(KCOrientation)orientation
+{
+    self = [super initWithX:x Y:y];
+    if (self) {
+        NSAssert(orientation == north || orientation == east || orientation == west || orientation == south, @"invalid orientation");
+        _orientation = orientation;
+    } return self;
+}
+
 + (KCHeadedPosition*)positionWithX:(int)x Y:(int)y orientation:(KCOrientation)orientation
 {
-    KCPosition * position = [[KCPosition alloc] initWithX:x Y:y];
-    return [[self alloc] initWithPosition:position orientation:orientation];
+    return [[self alloc] initWithX:x Y:y orientation:orientation];
 }
 
 + (KCHeadedPosition*)headedPositionFromString:(NSString *)description
 {
     NSArray * components = [description componentsSeparatedByString:@" "];
+    
+    if (components.count != 3) return nil;
+    
     KCPosition * position = [KCPosition positionFromArrayOfComponentStrings:components];
     KCOrientation orientation = [components objectAtIndex:2];
     if ([orientation isEqualToString:north]) {
@@ -41,6 +57,8 @@
         orientation = east;
     } else  if ([orientation isEqualToString:west]) {
         orientation = west;
+    } else {
+        return nil;
     }
     return [[self alloc] initWithPosition:position orientation:orientation];
 }
@@ -95,7 +113,7 @@
         result = [KCHeadedPosition positionWithX:self.x+1 Y:self.y orientation:self.orientation];
     } else if (self.orientation == south) {
         result = [KCHeadedPosition positionWithX:self.x Y:self.y+1 orientation:self.orientation];
-    } else {
+    } else if (self.orientation == west) {
         result = [KCHeadedPosition positionWithX:self.x-1 Y:self.y orientation:self.orientation];
     }
     return result;
@@ -116,18 +134,20 @@
 
 - (NSString *)description
 {
-    return [[super description] stringByAppendingFormat:@" %@", self.orientation];
+    return [NSString stringWithFormat:@"%d %d %@", self.x, self.y, self.orientation];
+    //return [[super description] stringByAppendingFormat:@" %@", self.orientation];
 }
 
 - (NSUInteger)hash
 {
-    return [self.description hash];
+    if (!self.p_hash) self.p_hash = [self.description hash];
+    return self.p_hash;
 }
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    //KCHeadedPosition * copy = [KCHeadedPosition positionWithX:self.x Y:self.y orientation:self.orientation];
-    return self;
+    KCHeadedPosition * copy = [KCHeadedPosition positionWithX:self.x Y:self.y orientation:self.orientation];
+    return copy;
 }
 
 

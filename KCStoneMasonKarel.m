@@ -1,15 +1,6 @@
-//
-//  KCStoneMasonKarel.m
-//  Karel learns Objective-C
-//
-//  Created by Lukas Gianinazzi on 16.01.13.
-//  Copyright (c) 2013 Lukas Gianinazzi. All rights reserved.
-//
-
 #import "KCStoneMasonKarel.h"
-
 @implementation KCStoneMasonKarel
-
+//precondition: Karel is at (1, 1) facing east
 - (void)run
 {
     while ([self frontIsClear]) {
@@ -19,30 +10,21 @@
     [self repairColumn];
 }
 
+//precondtion: facing east at bottom of column
+//postcondition: facing east at bottom of column, column repaired
 - (void)repairColumn
 {
-    [self turnLeft];
     [self ascendAndRepairColumn];
-    [self turnAround];
+    [self turnAround]; //descend column
     [self moveToWall];
     [self turnLeft];
 }
 
-- (void)turnAround
-{
-    [self turnLeft];
-    [self turnLeft];
-}
-
-- (void)turnRight
-{
-    [self turnLeft];
-    [self turnLeft];
-    [self turnLeft];
-}
-
+//precondition: facing east at bottom of column
+//postcondition: facing north at top of column, column repaired
 - (void)ascendAndRepairColumn
 {
+    [self turnLeft];
     while ([self frontIsClear]) {
         [self checkCurrentSquare];
         [self move];
@@ -50,13 +32,17 @@
     [self checkCurrentSquare];
 }
 
+//postcondition: beepersPresent
 - (void)checkCurrentSquare
 {
-    if ([self noBeepersPresent]) {
+    if ( [self noBeepersPresent] ) {
         [self putBeeper];
+    } else {
+        
     }
 }
 
+//postcondition: frontIsBlocked
 - (void)moveToWall
 {
     while ([self frontIsClear]) {
@@ -64,11 +50,12 @@
     }
 }
 
+//precondition: at bottom of column, there is a next column
+//postcondition: at bottom of next column
 - (void)advanceToNextColumn
 {
     for (int i = 0; i < 4; i++) {
         [self move];
     }
 }
-
 @end

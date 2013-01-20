@@ -44,20 +44,18 @@
 {
     //Wall test
     ////basic consistency test
-    NSMutableSet * walls = [NSMutableSet set];
     for (int i = 1; i <= self.testSize; i++) {
         for (int j = 1; j <= self.testSize; j++) {
             KCHeadedPosition * position = [KCHeadedPosition positionWithX:i Y:j orientation:north];
-            [walls addObject:position];
+            [self.world addWallAtPosition:position];
             position = [KCHeadedPosition positionWithX:i Y:j orientation:south];
-            [walls addObject:position];
+            [self.world addWallAtPosition:position];
             position = [KCHeadedPosition positionWithX:i Y:j orientation:east];
-            [walls addObject:position];
+            [self.world addWallAtPosition:position];
             position = [KCHeadedPosition positionWithX:i Y:j orientation:west];
-            [walls addObject:position];
+            [self.world addWallAtPosition:position];
         }
     }
-    self.world.positionsOfWalls = walls;
     for (int i = 1; i <= self.testSize; i++) {
         for (int j = 1; j <= self.testSize; j++) {
             KCHeadedPosition * position = [KCHeadedPosition positionWithX:i Y:j orientation:north];
@@ -110,13 +108,7 @@
         [self.world setNumberOfBeepers:n atPosition:position];
         STAssertTrue([self.world numberOfBeepersAtPosition:position] == n, @"number of beepers at position wrong: random value assignment to 1, 1 failed");
     }
-    //alternate creation test
-    NSDictionary * beepers = [KCWorld beeperDictionaryFromString:@"1 1 1, 2 2 2, 3 3 3, 4 4 4"];
-    self.world.numberOfBeepersAtPositions = beepers;
-    STAssertTrue([self.world numberOfBeepersAtPosition:[KCPosition positionFromString:@"1 1"]] == 1, @"alternate creation test: consistency: failed");
-    STAssertTrue([self.world numberOfBeepersAtPosition:[KCPosition positionFromString:@"2 2"]] == 2, @"alternate creation test: consistency: failed");
-    STAssertTrue([self.world numberOfBeepersAtPosition:[KCPosition positionFromString:@"3 3"]] == 3, @"alternate creation test: consistency: failed");
-    STAssertTrue([self.world numberOfBeepersAtPosition:[KCPosition positionFromString:@"4 4"]] == 4, @"alternate creation test: consistency: failed");
+
     
 }
 

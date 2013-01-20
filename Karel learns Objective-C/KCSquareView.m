@@ -8,6 +8,9 @@
 
 #import "KCSquareView.h"
 
+UIImage * __bgImage = nil;
+UIImage * __beeperImage = nil;
+
 @interface KCSquareView()
 
 @property (nonatomic, weak) UIImageView * bgView;
@@ -23,8 +26,10 @@
 - (UIImageView*)bgView
 {
     if (!_bgView) {
-        UIImage * bgImage = [UIImage imageNamed:@"square_128_bg"];
-        UIImageView * bgView = [[UIImageView alloc] initWithImage:bgImage];
+        if (!__bgImage) {
+            __bgImage = [UIImage imageNamed:@"square_128_bg"];
+        }
+        UIImageView * bgView = [[UIImageView alloc] initWithImage:__bgImage];
         bgView.frame = self.bounds;
         [self addSubview:bgView];
         _bgView = bgView;
@@ -34,9 +39,10 @@
 - (UIImageView*)beeperView
 {
     if (!_beeperView) {
-        UIImage * image = [UIImage imageNamed:@"square_128_beeper"];
-        UIImageView * beeperView = [[UIImageView alloc] initWithImage:image];
-        beeperView.frame = self.bounds;
+        if (!__beeperImage) {
+            __beeperImage = [UIImage imageNamed:@"square_128_beeper"];
+        }
+        UIImageView * beeperView = [[UIImageView alloc] initWithImage:__beeperImage];
         [self addSubview:beeperView];
         _beeperView = beeperView;
     } return _beeperView;
@@ -51,7 +57,7 @@
         beeperLabel.textAlignment = NSTextAlignmentCenter;
         beeperLabel.contentMode = UIViewContentModeCenter;
         beeperLabel.adjustsFontSizeToFitWidth = YES;
-        beeperLabel.frame = CGRectMake(self.frame.size.width/4, 0, self.frame.size.width/2, self.frame.size.height);
+        //beeperLabel.frame = CGRectMake(self.frame.size.width/4, 0, self.frame.size.width/2, self.frame.size.height);
         [self addSubview:beeperLabel];
         _beeperCountLabel = beeperLabel;
     } return _beeperCountLabel;
@@ -60,9 +66,26 @@
 - (void)setNumberOfBeepers:(int)numberOfBeepers
 {
     NSAssert(numberOfBeepers >= 0, @"numbers of beepers positive");
-    self.beeperView.hidden = (numberOfBeepers == 0);
-    self.beeperCountLabel.hidden = (numberOfBeepers <= 1);
-    self.beeperCountLabel.text = [NSString stringWithFormat:@"%d", numberOfBeepers];
+
+    if (numberOfBeepers == 0) {
+        _beeperView.hidden = YES;
+    } else {
+        self.beeperView.hidden = NO;
+    }
+    
+    if (numberOfBeepers <= 1) {
+        _beeperCountLabel.hidden = YES;
+    } else {
+        self.beeperCountLabel.hidden = NO;
+        self.beeperCountLabel.text = [NSString stringWithFormat:@"%d", numberOfBeepers];
+    }
+}
+
+- (void)layoutSubviews
+{
+    for (UIView * view in self.subviews) {
+        view.frame = self.bounds;
+    }
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -70,10 +93,19 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.bgView.hidden = NO;
-        self.backgroundColor = [UIColor blackColor];
-        // Initialization code
     }
     return self;
+}
+
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor
+{
+    [super setBackgroundColor:backgroundColor];
+    if (!backgroundColor) {
+        self.bgView.hidden = NO;
+    } else {
+        self.bgView.hidden = YES;
+    }
 }
 
 /*

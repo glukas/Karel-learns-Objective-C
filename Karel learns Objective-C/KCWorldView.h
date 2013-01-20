@@ -22,6 +22,9 @@
 //karel
 - (KCHeadedPosition*)positionOfKarelForWorldView:(KCWorldView*)worldView;;
 
+//square colors
+- (UIColor*)colorForSquareAtPosition:(KCPosition*)position forWorldView:(KCWorldView*)worldView;
+
 //walls
 //all members must be of type KCHeadedOrientation
 - (NSSet*)positionsOfWallsForWorldView:(KCWorldView*)worldView;;
@@ -32,7 +35,6 @@
 
 @interface KCWorldView : UIView
 //to start using the view, set datasource and call reloadWorld
-//when reload world is called, the frame must be set to the desired size
 
 
 @property (nonatomic, weak) id <KCWorldViewDatasource> datasource;
@@ -40,7 +42,7 @@
 
 //if you change the model, update the view by calling these methods:
 
-//beepers at position changed
+//beepers or color at position changed
 - (void)reloadSquareAtPosition:(KCPosition*)position;
 
 //will reposition karel
@@ -54,5 +56,10 @@
 //will cause the datsource to be queried for new information
 //new size possible
 - (void)reloadWorld;
+
+
+
+//getting positions from positions in view
+- (KCPosition*)positionFromPointInView:(CGPoint)location;
 
 @end

@@ -12,7 +12,7 @@
 
 @interface KCMatrix : NSObject
 
-- (id)initWithSize:(KCSize*)size;
+//the KCMatrix maps positions in two dimenstion to objects
 
 //object must be non-nil
 - (void)setObject:(id)object AtPosition:(KCPosition*)position;
@@ -20,5 +20,6 @@
 //result is nil if no object at position
 - (id)objectAtPosition:(KCPosition*)position;
 
+@property (readonly) NSUInteger count;
 
 @end

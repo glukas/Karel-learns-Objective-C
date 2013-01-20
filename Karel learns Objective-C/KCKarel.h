@@ -19,17 +19,23 @@ static KCCount KCUnlimited = INT_MAX;
 
 - (id)initWithWorld:(KCWorld *)world numberOfBeepers:(KCCount)count;
 
+@property (nonatomic, weak) KCWorld * world;
+
 //subclass Karel and overwrite run
-//to run karel, execute on a background thread, otherwise your main thread will be blocked
 - (void)run;
 
 //basic operations:
 
-- (void)move;
+- (void)move;//precondition: frontIsClear
 - (void)turnLeft;
-- (void)pickBeeper;
-//must have at least one beeper in bag
-- (void)putBeeper;
+- (void)pickBeeper;//precondition: beepersPresent
+- (void)putBeeper;//precondition: beepersInBag
+
+//colors
+
+- (void)paintCorner:(UIColor*)color;
+
+//conditions
 
 - (BOOL)beepersPresent;
 - (BOOL)noBeepersPresent;
@@ -44,5 +50,6 @@ static KCCount KCUnlimited = INT_MAX;
 - (BOOL)frontIsBlocked;
 - (BOOL)leftIsBlocked;
 - (BOOL)rightIsBlocked;
+
 
 @end

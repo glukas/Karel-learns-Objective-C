@@ -9,7 +9,7 @@
 #import "KCKarel.h"
 
 @interface KCKarel()
-@property (nonatomic, weak) KCWorld * world;
+
 @property (nonatomic) KCCount numberOfBeepersInBag;
 @property (nonatomic) int identification;
 @end
@@ -34,20 +34,29 @@
 
 - (void)turnLeft
 {
-    [self.world nextTurn];
     [self.world setPosition:[[self front] rotateLeft] ofKarel:self];
-    
+    [self.world nextTurn];
 }
 
 - (void)move
 {
-    [self.world nextTurn];
+    
     KCHeadedPosition * currentPosition = [self front];
     if ([self.world isWallAtHeadedPosition:currentPosition]) {
+        NSLog(@"position: %@", currentPosition);
         NSAssert(false, @"moved into wall!");
     }
     [self.world setPosition:[currentPosition moveInDirectionOfOrientation] ofKarel:self];
+    [self.world nextTurn];
+}
+
+#pragma mark painting
+
+- (void)paintCorner:(UIColor *)color
+{
     
+    [self.world setColor:color atPosition:[self here]];
+    [self.world nextTurn];
 }
 
 #pragma mark beepers

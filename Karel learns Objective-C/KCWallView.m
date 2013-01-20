@@ -8,6 +8,9 @@
 
 #import "KCWallView.h"
 
+UIImage * __square_wall_landscape_image = nil;
+UIImage * __square_wall_portrait_image = nil;
+
 @interface KCWallView()
 @property (nonatomic, weak) UIImageView * imageView;
 @end
@@ -20,13 +23,18 @@
     UIImage * image;
     UIImageView * view;
     if (self) {
-        self.backgroundColor = [UIColor redColor];
         if (orientation == south || orientation == north) {
             //landscape
-            image = [UIImage imageNamed:@"square_wall_landscape"];
+            if (!__square_wall_landscape_image) {
+                __square_wall_landscape_image = [UIImage imageNamed:@"square_wall_landscape"];
+            }
+            image = __square_wall_landscape_image;
         } else {
             //portrait
-            image = [UIImage imageNamed:@"square_wall_portrait"];
+            if (!__square_wall_portrait_image) {
+                __square_wall_portrait_image = [UIImage imageNamed:@"square_wall_portrait"];
+            }
+            image = __square_wall_portrait_image;
         }
         view = [[UIImageView alloc] initWithImage:image];
         float ratio = length/MAX(view.frame.size.height, view.frame.size.width);

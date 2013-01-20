@@ -20,14 +20,9 @@
     [self turnRight];
     [self move];
     [self move];
+    [self putBeeper];
 }
 
 
-- (void)turnRight
-{
-    [self turnLeft];
-    [self turnLeft];
-    [self turnLeft];
-}
 
 @end

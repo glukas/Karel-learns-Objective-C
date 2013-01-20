@@ -13,8 +13,8 @@
 - (id)initWithX:(int)x Y:(int)y
 {
     self = [super init];
-    NSAssert(x >= 0, @"position positive");
-    NSAssert(y >= 0, @"position positive");
+    NSAssert(x > 0, @"position positive");
+    NSAssert(y > 0, @"position positive");
     if (self) {
         _x = x;
         _y = y;
@@ -24,7 +24,11 @@
 + (KCPosition*)positionFromString:(NSString *)description
 {
     NSArray * components = [description componentsSeparatedByString:@" "];
-    return [self positionFromArrayOfComponentStrings:components];
+    KCPosition * result;
+    if (components.count == 2) {
+        result = [self positionFromArrayOfComponentStrings:components];
+    }
+    return result;
 }
 
 + (KCPosition*)positionFromArrayOfComponentStrings:(NSArray *)components
@@ -57,7 +61,7 @@
 
 - (NSUInteger)hash
 {
-    return [[self description] hash];
+    return [[NSNumber numberWithInt:self.x*10000+self.y] hash];
 }
 
 - (id)copyWithZone:(NSZone *)zone

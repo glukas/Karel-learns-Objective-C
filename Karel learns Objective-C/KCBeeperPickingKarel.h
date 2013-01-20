@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Lukas Gianinazzi. All rights reserved.
 //
 
-#import "KCKarel.h"
+#import "KCSuperKarel.h"
 
-@interface KCBeeperPickingKarel : KCKarel
+@interface KCBeeperPickingKarel : KCSuperKarel
 
 @end

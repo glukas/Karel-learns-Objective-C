@@ -50,39 +50,95 @@
     } return _karelView;
 }
 
+/*
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    [self reloadWorld];
+}*/
+
 
 - (void)reloadSquareAtPosition:(KCPosition *)position
 {
     KCSquareView * square = [self.squareViews objectAtPosition:position];
     if (!square) {
-        CGRect sqrect = CGRectMake((position.x-1)*self.squareSize.width+self.contentOffset.x, (position.y-1)*self.squareSize.height+self.contentOffset.y, self.squareSize.width, self.squareSize.height);
+        CGRect sqrect = [self frameForSquareViewAtPosition:position];
         square= [[KCSquareView alloc] initWithFrame:sqrect];
         [self addSubview:square];
         [self.squareViews setObject:square AtPosition:position];
+    } else {
+        square.hidden = NO;
     }
+    square.backgroundColor = [self.datasource colorForSquareAtPosition:position forWorldView:self];
     square.numberOfBeepers = [self.datasource numberOfBeepersAtPosition:position forWorldView:self];
+    [square setNeedsDisplay];
 }
+
+- (CGRect)frameForSquareViewAtPosition:(KCPosition*)position
+{
+    return CGRectMake((position.x-1)*self.squareSize.width+self.contentOffset.x, (position.y-1)*self.squareSize.height+self.contentOffset.y, self.squareSize.width, self.squareSize.height);
+}
+
+- (void)layoutSubviews
+{
+    
+    if (!self.squareViews) {
+        [self reloadWorld];
+    } else {
+        [self updateDimensions];
+    }
+    if (!self.currentSizeOfWorld) return;
+    if (self.squareSize.width== 0) return;
+    for (int row = 1; row <= self.currentSizeOfWorld.height; row++) {
+        for (int column = 1; column <= self.currentSizeOfWorld.width; column++) {
+            KCPosition * position = [[KCPosition alloc] initWithX:column Y:row];
+            KCSquareView * squareView = [self.squareViews objectAtPosition:position];
+            [squareView setFrame:[self frameForSquareViewAtPosition:position]];
+        }
+    }
+}
+
+- (void)updateDimensions
+{
+    float sqsize = self.bounds.size.width / self.currentSizeOfWorld.width;
+    self.squareSize = CGSizeMake(sqsize, sqsize);
+    //the resulting height is the height of the playing field
+    float resultingHeight = self.squareSize.height*self.currentSizeOfWorld.height;
+    //how much the playing field is set off from the top of the view (the field is centered)
+    self.contentOffset = CGPointMake(0, (self.frame.size.height-resultingHeight)/2);
+}
+
+
 
 - (void)reloadWorld
 {
     self.backgroundColor = [UIColor darkGrayColor];
-    //todo: what if sizeOfWorld changes?
+    [self clearSquareViews];//need to be performed before the new size is set
+    
     KCSize * sizeOfWorld = [self.datasource sizeOfWorldForWorldView:self];
+    //update dimensions
     self.currentSizeOfWorld = sizeOfWorld;
     
-    if ([self.currentSizeOfWorld isEqual:sizeOfWorld]) {
-        [self clearSquareViews];
-    }
-    
-    if (!self.squareViews) {
-        self.squareViews = [[KCMatrix alloc] initWithSize:sizeOfWorld];
-    }
+    if (!sizeOfWorld) return; //0 sizes are not allowed
     
     float sqsize = self.frame.size.width / sizeOfWorld.width;
-    self.squareSize = CGSizeMake(sqsize, sqsize);
-    float resultingHeight = self.squareSize.height*self.currentSizeOfWorld.height;
-    self.contentOffset = CGPointMake(0, (self.frame.size.height-resultingHeight)/2);
     
+    if (sqsize == 0) return; //0 sizes are not allowed
+    
+    
+    
+    if (!self.squareViews) {//create storage if necessary
+        self.squareViews = [[KCMatrix alloc] init];
+    }
+    
+
+    self.squareSize = CGSizeMake(sqsize, sqsize);
+    //the resulting height is the height of the playing field 
+    float resultingHeight = self.squareSize.height*self.currentSizeOfWorld.height;
+    //how much the playing field is set off from the top of the view (the field is centered)
+    self.contentOffset = CGPointMake(0, (self.frame.size.height-resultingHeight)/2);
+
+    //update/create square views and update beeper count
     for (int row = 1; row <= sizeOfWorld.height; row++) {
         for (int column = 1; column <= sizeOfWorld.width; column++) {
             KCPosition * position = [[KCPosition alloc] initWithX:column Y:row];
@@ -92,14 +148,24 @@
     }
 
     [self reloadKarel];
+    
+    //remove and re-create all walls
+    //this is pretty bruteforce
     [self reloadWalls];
-    
-    
 }
 
+//precondition: old size of world (the size you want to clean)
 - (void)clearSquareViews
 {
-    //todo:
+    for (int row = 1; row <= self.currentSizeOfWorld.height; row++) {
+        for (int column = 1; column <= self.currentSizeOfWorld.width; column++) {
+            KCPosition * position = [[KCPosition alloc] initWithX:column Y:row];
+            KCSquareView * squareView = [self.squareViews objectAtPosition:position];
+            [squareView setHidden:YES];
+            //[squareView removeFromSuperview];
+        }
+    }
+    //self.squareViews = nil;
 }
 
 - (void)reloadWalls
@@ -159,17 +225,33 @@
     return result;
 }
 
-
+- (KCPosition*)positionFromPointInView:(CGPoint)location
+{
+    KCPosition * position;
+    int x;
+    int y;
+    x = (location.x -self.contentOffset.x)/self.squareSize.width + 1;
+    y = (location.y -self.contentOffset.y)/self.squareSize.height + 1;
+    if (x > 0 && x <= self.currentSizeOfWorld.width && y > 0 && y <= self.currentSizeOfWorld.height) {
+        position = [[KCPosition alloc] initWithX:x Y:y];
+    }
+    
+    return position;
+}
 
 - (void)reloadKarel
 {
     KCHeadedPosition * position= [self.datasource positionOfKarelForWorldView:self];
     
-    
-    CGPoint positionInView = [self positionOfKarelInViewfromGamePosition:position];
-    self.karelView.frame = CGRectMake(positionInView.x, positionInView.y, self.squareSize.width, self.squareSize.height);
-    self.karelView.orientation = position.orientation;
-    self.karelView.hidden = !position;
+    if (position) {
+        CGPoint positionInView = [self positionOfKarelInViewfromGamePosition:position];
+        self.karelView.frame = CGRectMake(positionInView.x, positionInView.y, self.squareSize.width, self.squareSize.height);
+        self.karelView.orientation = position.orientation;
+        self.karelView.hidden = NO;
+        [self bringSubviewToFront:self.karelView];
+    } else {
+        self.karelView.hidden = YES;
+    }
 }
 
 // Only override drawRect: if you perform custom drawing.

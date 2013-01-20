@@ -11,11 +11,37 @@
 @interface KCWorld()
 //values: KCHeadedPosition key: KCKarel objects
 @property (nonatomic, strong) NSDictionary * karelPositions;
+
+//contains KCPositions
+@property (nonatomic, strong) NSSet * modifiedPositions;
+
+//contains KCHeadedPositions
+@property (nonatomic, strong) NSSet * positionsOfWalls;
+
+//keys: KCPosition values: NSNumber
+@property (nonatomic, strong) NSDictionary * numberOfBeepersAtPositions;
+
+@property (nonatomic, strong) NSDictionary * colorsAtPositions;
+
 @end
 
 
 @implementation KCWorld
 @synthesize numberOfBeepersAtPositions = _numberOfBeepersAtPositions;
+@synthesize modifiedPositions = _modifiedPositions;
+
+- (void)setModifiedPositions:(NSSet *)modifiedPositions
+{
+    _modifiedPositions = modifiedPositions;
+    if (modifiedPositions.count) {
+        [self postChangeNotification];
+    }
+}
+
+- (NSSet *)wallPositions
+{
+    return self.positionsOfWalls;
+}
 
 #pragma mark propertys: lazy instanciation
 
@@ -39,7 +65,6 @@
 {
     if (_numberOfBeepersAtPositions != numberOfBeepersAtPositions) {
         _numberOfBeepersAtPositions = numberOfBeepersAtPositions;
-        [self postChangeNotification];
     }
 }
 
@@ -47,7 +72,6 @@
 {
     if (positionsOfWalls != _positionsOfWalls) {
         _positionsOfWalls = positionsOfWalls;
-        [self postChangeNotification];
     }
 }
 
@@ -59,15 +83,30 @@
     } return _karelPositions;
 }
 
+- (NSSet*)modifiedPositions
+{
+    if (!_modifiedPositions) {
+        _modifiedPositions = [NSSet set];
+    } return _modifiedPositions;
+}
+
+
+- (NSDictionary *)colorsAtPositions
+{
+    if (!_colorsAtPositions) {
+        _colorsAtPositions = [NSDictionary dictionary];
+    } return _colorsAtPositions;
+}
 
 #pragma mark notifications
 
 - (void)postChangeNotification
 {
     if ([[NSThread currentThread] isMainThread]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:KCWorldChangedNotification object:self userInfo:nil];
+        NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:self.modifiedPositions, KCWorldChangedNotificationModifiedPositionsKey, nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:KCWorldChangedNotification object:self userInfo:userInfo];
     } else {
-        [self performSelectorOnMainThread:@selector(postChangeNotification) withObject:nil waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(postChangeNotification) withObject:nil waitUntilDone:YES];
     }
 }
 
@@ -80,9 +119,18 @@
 
 - (void)setPosition:(KCHeadedPosition *)position ofKarel:(KCKarel *)karel
 {
+    //note modifications
+    KCPosition * previous = [[self.karelPositions objectForKey:karel] asUnheadedPosition];
+    if (previous) {
+        self.modifiedPositions = [self.modifiedPositions setByAddingObject:previous];
+    }
+    self.modifiedPositions = [self.modifiedPositions setByAddingObject:[position asUnheadedPosition]];
+    
+    //change position
     NSMutableDictionary * mutableCopy = [self.karelPositions mutableCopy];
     [mutableCopy setObject:position forKey:karel];
     self.karelPositions = [mutableCopy copy];
+    
     [self postChangeNotification];
 }
 
@@ -91,6 +139,40 @@
     KCHeadedPosition * result = [self.karelPositions objectForKey:karel];
     return result;
 }
+
+
+- (void)removeKarel:(KCKarel *)karel
+{
+    if (karel) {
+        NSMutableDictionary * karelPositionsMutable = [self.karelPositions mutableCopy];
+        [karelPositionsMutable removeObjectForKey:karel];
+        karel.world = nil;
+        self.karelPositions = [karelPositionsMutable copy];
+    }
+}
+
+#pragma mark colors
+
+- (UIColor*)colorAtPosition:(KCPosition *)position
+{
+    return [self.colorsAtPositions objectForKey:position];
+}
+
+
+- (void)setColor:(UIColor *)color atPosition:(KCPosition *)position
+{
+    NSMutableDictionary * mutableDictionary = [self.colorsAtPositions mutableCopy];
+    
+    if (color) {
+        [mutableDictionary setObject:color forKey:position];
+    } else {
+        [mutableDictionary removeObjectForKey:position];
+    }
+    self.colorsAtPositions = [mutableDictionary copy];
+    
+    self.modifiedPositions = [self.modifiedPositions setByAddingObject:position];
+}
+
 
 #pragma mark beepers
 
@@ -118,7 +200,7 @@
         [mutableCopy setObject:[NSNumber numberWithInt:count] forKey:position];
         self.numberOfBeepersAtPositions = [mutableCopy copy];
     }
-    [self postChangeNotification];
+    self.modifiedPositions = [self.modifiedPositions setByAddingObject:position];
 }
 
 
@@ -140,14 +222,28 @@
 - (KCHeadedPosition*)equivalentWallPosition:(KCHeadedPosition*)position
 {
     KCHeadedPosition * result;
+    int x;
+    int y;
+    KCOrientation orientation;
     if (position.orientation == east) {
-        result = [KCHeadedPosition positionWithX:position.x+1 Y:position.y orientation:west];
+        x = position.x+1;
+        y = position.y;
+        orientation = west;
     } else if (position.orientation == west) {
-        result = [KCHeadedPosition positionWithX:position.x-1 Y:position.y orientation:east];
+        x = position.x-1;
+        y = position.y;
+        orientation = east;
     } else if (position.orientation == north) {
-        result = [KCHeadedPosition positionWithX:position.x Y:position.y-1 orientation:south];
+        x = position.x;
+        y = position.y-1;
+        orientation = south;
     } else if (position.orientation == south) {
-        result = [KCHeadedPosition positionWithX:position.x Y:position.y+1 orientation:north];
+        x = position.x;
+        y = position.y+1;
+        orientation = north;
+    }
+    if (x > 0 && y > 0) {
+        result = [KCHeadedPosition positionWithX:x Y:y orientation:orientation];
     }
     
     return result;
@@ -175,11 +271,40 @@
     self.positionsOfWalls = [borders setByAddingObjectsFromSet:self.positionsOfWalls];
 }
 
+- (void)addWallAtPosition:(KCHeadedPosition *)position
+{
+    //modify model
+    self.positionsOfWalls = [self.positionsOfWalls setByAddingObject:position];
+    //mark down change
+    self.modifiedPositions = [self.modifiedPositions setByAddingObject:[position asUnheadedPosition]];
+}
+
+- (void)removeWallAtPosition:(KCHeadedPosition *)position
+{
+    //remove position
+    NSMutableSet * mutableCopy = [self.positionsOfWalls mutableCopy];
+    [mutableCopy removeObject:position];
+    self.modifiedPositions = [self.modifiedPositions setByAddingObject:[position asUnheadedPosition]];
+    
+    //remove equivalent poistion (there are two coordinates mapping to the same wall)
+    KCHeadedPosition * equivalentPosition = [self equivalentWallPosition:position];
+    if (equivalentPosition) {
+        [mutableCopy removeObject:equivalentPosition];
+        self.modifiedPositions = [self.modifiedPositions setByAddingObject:equivalentPosition];
+    }
+    
+    //commit changes
+    self.positionsOfWalls = [mutableCopy copy];    
+}
 
 #pragma mark turn
 
 - (void)nextTurn
 {
+    //notify subscribers of change
+    if (self.modifiedPositions.count) {
+        [self postChangeNotification];
+    }
     [NSThread sleepForTimeInterval:self.turnLength];
 }
 
@@ -190,7 +315,20 @@
 {
     KCWorld * result;
     NSString * path = [[NSBundle mainBundle] pathForResource:nameOfWorld ofType:@"kcw"];
+    if (!path) {
+        path = [[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:nameOfWorld] stringByAppendingPathExtension:@"kcw"];
+    }
     NSString * worldDescription = [NSString stringWithContentsOfFile:path encoding:NSUnicodeStringEncoding error:nil];
+    if (worldDescription) {
+        result = [self worldFromString:worldDescription];
+    }
+    return result;
+}
+
++ (KCWorld*)worldWithURL:(NSURL*)url
+{
+    KCWorld * result;
+    NSString * worldDescription = [NSString stringWithContentsOfURL:url encoding:NSUnicodeStringEncoding error:nil];
     if (worldDescription) {
         result = [self worldFromString:worldDescription];
     }
@@ -203,10 +341,14 @@
     NSRange keywordRange = [original rangeOfString:keyword options:NSCaseInsensitiveSearch];
     if (keywordRange.location != NSNotFound) {
         NSRange startOfParenthesis = [original rangeOfString:leftDelimiter options:NSCaseInsensitiveSearch range:NSMakeRange(keywordRange.location, original.length-keywordRange.location)];
-        NSRange endOfParenthesis = [original rangeOfString:rightDelimiter options:NSCaseInsensitiveSearch range:NSMakeRange(startOfParenthesis.location, original.length-startOfParenthesis.location)];
-        
-        NSRange resultRange = NSMakeRange(startOfParenthesis.location+startOfParenthesis.length, endOfParenthesis.location-startOfParenthesis.location-endOfParenthesis.length);
-        result = [original substringWithRange:resultRange];
+        if (startOfParenthesis.location != NSNotFound) {
+            NSRange endOfParenthesis = [original rangeOfString:rightDelimiter options:NSCaseInsensitiveSearch range:NSMakeRange(startOfParenthesis.location, original.length-startOfParenthesis.location)];
+            if (endOfParenthesis.location != NSNotFound) {
+                NSRange resultRange = NSMakeRange(startOfParenthesis.location+startOfParenthesis.length, endOfParenthesis.location-startOfParenthesis.location-endOfParenthesis.length);
+                result = [original substringWithRange:resultRange];
+            }
+            
+        }
     }
     return result;
 }
@@ -231,6 +373,15 @@
     
     //create karel from string
     NSString * karelString = [self findDescriptionOfPropertyWithName:@"karel" inWorldDescription:description];
+    if (karelString) {
+        [self karelFromString:karelString inWorld:result];
+    }
+    
+    return result;
+}
+
++ (KCKarel *)karelFromString:(NSString *)karelString inWorld:(KCWorld*)world
+{
     NSString * karelPositionString = [self substringAfterKeyword:@"position" betweenLeftDelimiter:@"[" rightDelimiter:@"]" ofString:karelString];
     NSString * karelBeeperBagString = [self substringAfterKeyword:@"beeperbag" betweenLeftDelimiter:@"[" rightDelimiter:@"]" ofString:karelString];
     NSString * karelClass = [self substringAfterKeyword:@"class" betweenLeftDelimiter:@"[" rightDelimiter:@"]" ofString:karelString];
@@ -244,12 +395,11 @@
         beeperBagCount = [karelBeeperBagString intValue];
     }
     
-    KCKarel * karel = [[NSClassFromString(karelClass) alloc] initWithWorld:result numberOfBeepers:beeperBagCount];
+    KCKarel * karel = [[NSClassFromString(karelClass) alloc] initWithWorld:world numberOfBeepers:beeperBagCount];
     if (karel) {
-        [result addKarel:karel atPosition:[KCHeadedPosition headedPositionFromString:karelPositionString]];
+        [world addKarel:karel atPosition:[KCHeadedPosition headedPositionFromString:karelPositionString]];
     }
-    
-    return result;
+    return karel;
 }
 
 + (NSDictionary*)beeperDictionaryFromString:(NSString *)description
@@ -278,9 +428,57 @@
     NSArray * wallDescriptions = [description componentsSeparatedByString:@", "];
     //create each wall position
     for (NSString * wallDescription in wallDescriptions) {
-        [result addObject:[KCHeadedPosition headedPositionFromString:wallDescription]];
+        KCHeadedPosition * position = [KCHeadedPosition headedPositionFromString:wallDescription];
+        if (position) {
+            [result addObject:position];
+        }
     }
     return [result copy];
+}
+
+- (NSString *)asString
+{
+    NSString * world;
+    //define size
+    world = [NSString stringWithFormat:@"size(%d %d) ", self.size.width, self.size.height];
+    
+    //define speed
+    world = [world stringByAppendingFormat:@"speed(%f) ", self.turnLength];
+    
+    //add karel
+    //todo
+    
+    //add walls
+    world = [world stringByAppendingFormat:@"walls("];
+    for (KCHeadedPosition * position in self.positionsOfWalls) {
+        world = [world stringByAppendingFormat:@"%@, ", position.description];
+    }
+    world = [world substringToIndex:world.length-2];//remove last comma
+    world = [world stringByAppendingString:@") "];
+    
+    //add beepers
+    world = [world stringByAppendingString:@"beepers("];
+    
+    for (KCPosition * position in self.numberOfBeepersAtPositions) {
+        int count = [[self.numberOfBeepersAtPositions objectForKey:position] intValue];
+        world = [world stringByAppendingFormat:@"%@ %d, ", position.description, count];
+        
+    }
+    world = [world substringToIndex:world.length-2];//remove last comma
+    world = [world stringByAppendingString:@") "];
+    
+    return world;
+}
+
+
+- (void)saveToURL:(NSURL *)url
+{
+    NSString * asString = [self asString];
+    NSError * error;
+    [asString writeToURL:url atomically:NO encoding:NSUnicodeStringEncoding error:&error];
+    if (error) {
+        NSLog(@"%@ %@", NSStringFromClass([self class]), error);
+    }
 }
 
 

@@ -34,14 +34,14 @@
 - (void)testPositionCreationConsistent
 {
     //basic consistency
-    for (int i = 0; i < 10; i++) {
+    for (int i = 1; i < 10; i++) {
         [self t_positionsWithX:i Y:i];
     }
     
     //random values
     int x = 0;
     int y = 0;
-    for (int i = 0; i < 30; i++) {
+    for (int i = 1; i < 30; i++) {
         x = rand();
         y = rand();
         [self t_positionsWithX:x Y:y];
@@ -51,16 +51,16 @@
 - (void)testPositionIsUsableInASet
 {
     NSMutableSet * testSet = [NSMutableSet set];
-    int testSize = 20;
-    for (int i = 0; i < testSize; i++) {
-        for (int j = 0; j < testSize; j++) {
+    int testSize = 30;
+    for (int i = 1; i < testSize; i++) {
+        for (int j = 1; j < testSize; j++) {
             KCPosition * pos = [[KCPosition alloc] initWithX:i Y:j];
             [testSet addObject:pos];
         }
     }
     
-    for (int i = 0; i < testSize; i++) {
-        for (int j = 0; j < testSize; j++) {
+    for (int i = 1; i < testSize; i++) {
+        for (int j = 1; j < testSize; j++) {
             KCPosition * pos = [[KCPosition alloc] initWithX:i Y:j];
             STAssertTrue([testSet containsObject:pos], @"NSSet did not contain position, but actually should have");
         }
@@ -71,16 +71,16 @@
 - (void)testPositionIsUsableAsAKeyForADictionary
 {
     NSMutableDictionary * testDictionary = [NSMutableDictionary dictionary];
-    int testSize = 20;
-    for (int i = 0; i < testSize; i++) {
-        for (int j = 0; j < testSize; j++) {
+    int testSize = 30;
+    for (int i = 1; i < testSize; i++) {
+        for (int j = 1; j < testSize; j++) {
             KCPosition * pos = [[KCPosition alloc] initWithX:i Y:j];
             [testDictionary setObject:[NSNumber numberWithInt:[pos hash]] forKey:pos];
         }
     }
     
-    for (int i = 0; i < testSize; i++) {
-        for (int j = 0; j < testSize; j++) {
+    for (int i = 1; i < testSize; i++) {
+        for (int j = 1; j < testSize; j++) {
             KCPosition * pos = [[KCPosition alloc] initWithX:i Y:j];
             STAssertTrue([testDictionary objectForKey:pos] != nil, @"value key pair present");
             STAssertTrue([[testDictionary objectForKey:pos] isEqual:[NSNumber numberWithInt:[pos hash]]], @"value key pair consistent");

@@ -42,7 +42,7 @@
 - (void)testPositionCreationConsistent
 {
     //basic consistency
-    for (int i = 0; i < 10; i++) {
+    for (int i = 1; i < 10; i++) {
         [self t_positionsWithX:i Y:i];
     }
 
@@ -59,16 +59,16 @@
 - (void)testHeadedPositionCanBeUsedAsAKeyInADictionary
 {
     NSMutableDictionary * testDictionary = [NSMutableDictionary dictionary];
-    int testSize = 20;
-    for (int i = 0; i < testSize; i++) {
-        for (int j = 0; j < testSize; j++) {
+    int testSize = 40;
+    for (int i = 1; i < testSize; i++) {
+        for (int j = 1; j < testSize; j++) {
             KCHeadedPosition * pos = [KCHeadedPosition positionWithX:i Y:j orientation:north];
             [testDictionary setObject:[NSNumber numberWithInt:[pos hash]] forKey:pos];
         }
     }
     
-    for (int i = 0; i < testSize; i++) {
-        for (int j = 0; j < testSize; j++) {
+    for (int i = 1; i < testSize; i++) {
+        for (int j = 1; j < testSize; j++) {
             KCHeadedPosition * pos = [KCHeadedPosition positionWithX:i Y:j orientation:north];
             STAssertTrue([testDictionary objectForKey:pos] != nil, @"value key pair present");
             STAssertTrue([[testDictionary objectForKey:pos] isEqual:[NSNumber numberWithInt:[pos hash]]], @"value key pair consistent");
@@ -77,11 +77,4 @@
 }
 
 
-- (void)testMovingPositionsConsistent
-{
-    KCHeadedPosition * p = [KCHeadedPosition positionWithX:3 Y:3 orientation:north];
-    KCHeadedPosition * p2 = [p moveInDirectionOfOrientation];
-    STAssertTrue(p.x == p2.x && p.y-1 == p2.y, @"movement in wrong direction");
-    
-}
 @end
