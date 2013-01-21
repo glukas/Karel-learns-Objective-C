@@ -52,4 +52,12 @@ static KCCount KCUnlimited = INT_MAX;
 - (BOOL)rightIsBlocked;
 
 
+//orientation
+
+- (BOOL)facingEast;
+- (BOOL)facingWest;
+- (BOOL)facingNorth;
+- (BOOL)facingSouth;
+
+
 @end
