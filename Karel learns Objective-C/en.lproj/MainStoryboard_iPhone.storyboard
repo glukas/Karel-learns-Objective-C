@@ -82,11 +82,6 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kW-gF-tKp">
                                 <items>
                                     <navigationItem title="Worlds" id="9EA-2H-98p">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="k6Z-7H-AnC">
-                                            <connections>
-                                                <action selector="cancelButtonTapped:" destination="x7b-Ov-bJZ" id="csj-ch-vLL"/>
-                                            </connections>
-                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="pm2-NM-s2C">
                                             <connections>
                                                 <segue destination="6aY-fD-toz" kind="modal" id="ubU-aC-Ehs"/>

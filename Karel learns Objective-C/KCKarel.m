@@ -182,6 +182,24 @@
     return self;
 }
 
+- (BOOL)facingEast
+{
+    return [self front].orientation == east;
+}
 
+- (BOOL)facingWest
+{
+    return [self front].orientation == west;
+}
+
+- (BOOL)facingNorth
+{
+    return [self front].orientation == north;
+}
+
+- (BOOL)facingSouth
+{
+    return [self front].orientation == south;
+}
 
 @end
