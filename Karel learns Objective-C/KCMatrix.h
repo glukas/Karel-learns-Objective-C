@@ -17,6 +17,9 @@
 //imagine it as a very large matrix initialized with nil
 //(this is of course not how it is implemented)
 
+//this class is NOT THREADSAFE
+
+
 
 //if object is nil, the position will be 'cleared'
 - (void)setObject:(id)object atPosition:(KCPosition*)position;

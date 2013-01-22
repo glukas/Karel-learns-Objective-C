@@ -16,11 +16,9 @@
     
     [self pushNumberOfFreeSquaresInFront];
     
-    [self.counter setValueAtLastSlot:[self.counter valueAtLastSlot]/2];
+    [self moveByHalfTheValueAtTheLastSlotOfTheCounter];
     
-    [self moveByLastValueOnCounter];
-    
-    [self.counter pushSlot];
+    [self.counter popSlot];
 }
 
 
@@ -29,7 +27,7 @@
     [self.counter pushSlot];
     
     while ([self frontIsClear]) {
-        [self.counter setValueAtLastSlot:[self.counter valueAtLastSlot]+1];
+        [self.counter incrementValueAtLastSlot];
         [self move];
     }
     
@@ -37,23 +35,30 @@
     
 }
 
-
-
-- (void)moveByLastValueOnCounter
+- (void)moveByHalfTheValueAtTheLastSlotOfTheCounter
 {
-    for (int i = 0; i < [self.counter valueAtLastSlot]; i++) {
+    [self.counter pushSlotWithValue:[self.counter valueAtLastSlot]];
+    while ([self.counter valueAtLastSlot] > 0) {
         [self move];
+        [self.counter decrementValueAtLastSlot];
+        [self.counter decrementValueAtLastSlot];
     }
+    [self.counter popSlot];
 }
 
 
 - (void)goBackByLastValueOnCounter
 {
+    [self.counter pushSlotWithValue:[self.counter valueAtLastSlot]];
+    
     [self turnAround];
-    for (int i = 0; i < [self.counter valueAtLastSlot]; i++) {
+    while ([self.counter valueAtLastSlot] > 0) {
         [self move];
+        [self.counter decrementValueAtLastSlot];
     }
     [self turnAround];
+    
+    [self.counter popSlot];
 }
 
 @end

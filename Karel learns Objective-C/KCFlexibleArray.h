@@ -14,6 +14,10 @@
 //this kind of datastructure is handy if you want to apply the lazy instanciation pattern to a series of objects
 //the flexible array is indexed from 0
 
+//this class is NOT THREADSAFE
+
+
+
 //returns nil if no object set at that index
 - (id)objectAtIndex:(NSUInteger)index;
 

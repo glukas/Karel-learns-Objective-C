@@ -37,13 +37,18 @@
 
 - (void)pushSlot
 {
+    [self pushSlotWithValue:0];
+}
+
+
+- (void)pushSlotWithValue:(int)value
+{
     NSMutableArray * mutableCopy = [self.internalCount mutableCopy];
     
-    [mutableCopy addObject:[NSNumber numberWithInt:0]];
+    [mutableCopy addObject:[NSNumber numberWithInt:value]];
     self.internalCount = [mutableCopy copy];
     [self.karel.world nextTurn];
 }
-
 
 - (void)popSlot
 {
@@ -54,23 +59,32 @@
     [self.karel.world nextTurn];
 }
 
+- (void)incrementValueAtLastSlot
+{
+    [self setValueAtLastSlot:[self valueAtLastSlot]+1];
+}
 
+- (void)decrementValueAtLastSlot
+{
+    [self setValueAtLastSlot:[self valueAtLastSlot]-1];
+}
 
 - (int)valueAtLastSlot
 {
     NSAssert([self notEmpty], @"precondition: not empty");
-    NSLog(@"counter: valueAtLastSlot: %d", [[self.internalCount lastObject] intValue]);
-    [self.karel.world nextTurn];
+    
     return [[self.internalCount lastObject] intValue];
 }
 
 - (void)setValueAtLastSlot:(int)value
 {
     NSAssert([self notEmpty], @"precondition: not empty");
+    
     NSMutableArray * mutableCopy = [self.internalCount mutableCopy];
     
     [mutableCopy setObject:[NSNumber numberWithInt:value] atIndexedSubscript:self.internalCount.count-1];
     self.internalCount = [mutableCopy copy];
+    
     [self.karel.world nextTurn];
 }
 

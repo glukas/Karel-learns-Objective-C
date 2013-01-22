@@ -123,9 +123,11 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSString * lastWorldOpened = [[NSUserDefaults standardUserDefaults] objectForKey:KCLastWorldOpenedUserDefaultsKey];
-    if (lastWorldOpened) {
-        [self loadWorldWithName:lastWorldOpened];
+    if (!_world) {
+        NSString * lastWorldOpened = [[NSUserDefaults standardUserDefaults] objectForKey:KCLastWorldOpenedUserDefaultsKey];
+        if (lastWorldOpened) {
+            [self loadWorldWithName:lastWorldOpened];
+        }
     }
     [self.worldView reloadWorld];
     [self.counterView reloadData];
