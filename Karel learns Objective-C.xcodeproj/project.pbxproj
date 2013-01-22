@@ -54,6 +54,8 @@
 		8094F59216AB6E5B00675294 /* KCColorByNumbersKarel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8094F59116AB6E5B00675294 /* KCColorByNumbersKarel.m */; };
 		8094F59516AB6E8400675294 /* ColorByNumbersKarel2.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 8094F59316AB6E8300675294 /* ColorByNumbersKarel2.kcw */; };
 		8094F59616AB6E8400675294 /* ColorByNumbersKarel1.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 8094F59416AB6E8300675294 /* ColorByNumbersKarel1.kcw */; };
+		80ABA4DB16AF3A3400AF7DE5 /* KCCountingArtistKarel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ABA4DA16AF3A3400AF7DE5 /* KCCountingArtistKarel.m */; };
+		80ABA4DE16AF3B8E00AF7DE5 /* CountingArtistKarel.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 80ABA4DD16AF3B8E00AF7DE5 /* CountingArtistKarel.kcw */; };
 		80C1784116A715060068B006 /* KCWorldSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784016A715060068B006 /* KCWorldSelectionViewController.m */; };
 		80C1784516A73CB70068B006 /* KCWorldLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784416A73CB70068B006 /* KCWorldLibrary.m */; };
 		80C1784616A73CB70068B006 /* KCWorldLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784416A73CB70068B006 /* KCWorldLibrary.m */; };
@@ -154,6 +156,9 @@
 		8094F59116AB6E5B00675294 /* KCColorByNumbersKarel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCColorByNumbersKarel.m; sourceTree = "<group>"; };
 		8094F59316AB6E8300675294 /* ColorByNumbersKarel2.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ColorByNumbersKarel2.kcw; path = ../ColorByNumbersKarel2.kcw; sourceTree = "<group>"; };
 		8094F59416AB6E8300675294 /* ColorByNumbersKarel1.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ColorByNumbersKarel1.kcw; path = ../ColorByNumbersKarel1.kcw; sourceTree = "<group>"; };
+		80ABA4D916AF3A3400AF7DE5 /* KCCountingArtistKarel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCCountingArtistKarel.h; sourceTree = "<group>"; };
+		80ABA4DA16AF3A3400AF7DE5 /* KCCountingArtistKarel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCCountingArtistKarel.m; sourceTree = "<group>"; };
+		80ABA4DD16AF3B8E00AF7DE5 /* CountingArtistKarel.kcw */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text; path = CountingArtistKarel.kcw; sourceTree = "<group>"; };
 		80C1783F16A715060068B006 /* KCWorldSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWorldSelectionViewController.h; sourceTree = "<group>"; };
 		80C1784016A715060068B006 /* KCWorldSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldSelectionViewController.m; sourceTree = "<group>"; };
 		80C1784316A73CB70068B006 /* KCWorldLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWorldLibrary.h; sourceTree = "<group>"; };
@@ -390,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				80ECDEF316AEF25400E467C4 /* CountingKarel.kcw */,
+				80ABA4DD16AF3B8E00AF7DE5 /* CountingArtistKarel.kcw */,
 				80EC223416ACA1AB00C8E764 /* ArtistKarel1.kcw */,
 				80EC223716ACA23100C8E764 /* ArtistKarel2.kcw */,
 				8094F59316AB6E8300675294 /* ColorByNumbersKarel2.kcw */,
@@ -413,6 +419,8 @@
 				8094F59116AB6E5B00675294 /* KCColorByNumbersKarel.m */,
 				80ECDEEC16AEEFBE00E467C4 /* KCCountingKarel.h */,
 				80ECDEED16AEEFBE00E467C4 /* KCCountingKarel.m */,
+				80ABA4D916AF3A3400AF7DE5 /* KCCountingArtistKarel.h */,
+				80ABA4DA16AF3A3400AF7DE5 /* KCCountingArtistKarel.m */,
 				8094F58D16AB6D8400675294 /* KCArtistKarel.h */,
 				8094F58E16AB6D8400675294 /* KCArtistKarel.m */,
 			);
@@ -522,6 +530,7 @@
 				80EC223516ACA1AB00C8E764 /* ArtistKarel1.kcw in Resources */,
 				80EC223816ACA23100C8E764 /* ArtistKarel2.kcw in Resources */,
 				80ECDEF416AEF25400E467C4 /* CountingKarel.kcw in Resources */,
+				80ABA4DE16AF3B8E00AF7DE5 /* CountingArtistKarel.kcw in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +594,7 @@
 				80ECDEFF16AEFB4800E467C4 /* KCFlexibleArray.m in Sources */,
 				80ECDF0216AF1EF200E467C4 /* KCColorPalette.m in Sources */,
 				80ECDF0816AF2AD100E467C4 /* KCSlotContainerView.m in Sources */,
+				80ABA4DB16AF3A3400AF7DE5 /* KCCountingArtistKarel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

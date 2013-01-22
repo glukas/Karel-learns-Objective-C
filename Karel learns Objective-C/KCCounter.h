@@ -50,6 +50,9 @@
 //precondition: not empty
 - (void)setValueAtLastSlot:(int)value;
 
+//copies the last value to the specified position (counted from behind)
+- (void)copyLastValueToSlotWithInverseIndex:(int)indexFromBehind;
+
 
 - (BOOL)empty;
 

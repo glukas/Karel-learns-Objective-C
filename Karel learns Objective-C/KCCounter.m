@@ -100,7 +100,16 @@
     [self.karel.world nextTurn];
 }
 
-
+- (void)copyLastValueToSlotWithInverseIndex:(int)indexFromBehind
+{
+    NSAssert([self notEmpty], @"precondition: not empty");    
+    NSMutableArray * mutableCopy = [self.internalCount mutableCopy];
+    
+    [mutableCopy setObject:[NSNumber numberWithInt:[self valueAtLastSlot]] atIndexedSubscript:self.internalCount.count-indexFromBehind-1];
+    self.internalCount = [mutableCopy copy];
+    
+    [self.karel.world nextTurn];
+}
 
 
 - (BOOL)empty
