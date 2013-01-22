@@ -52,7 +52,7 @@
 
 - (void)popSlot
 {
-    NSAssert([self notEmpty], @"precondition: not empty");
+    NSAssert([self notEmpty], @"precondition: counter not empty");
     NSMutableArray * mutableCopy = [self.internalCount mutableCopy];
     [mutableCopy removeLastObject];
     self.internalCount = [mutableCopy copy];
@@ -73,8 +73,20 @@
 {
     NSAssert([self notEmpty], @"precondition: not empty");
     
-    return [[self.internalCount lastObject] intValue];
+    return [self valueAtSlotWithInverseIndex:0];
 }
+
+
+- (int)valueAtSlotWithIndex:(int)index
+{
+    return [[self.internalCount objectAtIndex:index] intValue];
+}
+
+- (int)valueAtSlotWithInverseIndex:(int)indexFromBehind
+{
+    return [self valueAtSlotWithIndex:self.numberOfSlots-indexFromBehind-1];
+}
+
 
 - (void)setValueAtLastSlot:(int)value
 {
@@ -89,10 +101,6 @@
 }
 
 
-- (int)valueAtSlotWithIndex:(int)index
-{
-    return [[self.internalCount objectAtIndex:index] intValue];
-}
 
 
 - (BOOL)empty

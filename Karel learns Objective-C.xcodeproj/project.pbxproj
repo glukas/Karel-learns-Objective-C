@@ -73,6 +73,7 @@
 		80ECDEF916AEF61000E467C4 /* KCCounterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDEF716AEF61000E467C4 /* KCCounterView.m */; };
 		80ECDEFC16AEF95800E467C4 /* KCCounterSlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDEFB16AEF95800E467C4 /* KCCounterSlotView.m */; };
 		80ECDEFF16AEFB4800E467C4 /* KCFlexibleArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDEFE16AEFB4800E467C4 /* KCFlexibleArray.m */; };
+		80ECDF0216AF1EF200E467C4 /* KCColorPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDF0116AF1EF100E467C4 /* KCColorPalette.m */; };
 		80FFC7D316A5EA4600756027 /* KCWorldTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D216A5EA4600756027 /* KCWorldTest.m */; };
 		80FFC7D616A5EC0D00756027 /* KCPositionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D516A5EC0D00756027 /* KCPositionTest.m */; };
 		80FFC7D916A5F1C200756027 /* KCHeadedPositionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D816A5F1C200756027 /* KCHeadedPositionTest.m */; };
@@ -175,6 +176,8 @@
 		80ECDEFB16AEF95800E467C4 /* KCCounterSlotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCCounterSlotView.m; sourceTree = "<group>"; };
 		80ECDEFD16AEFB4700E467C4 /* KCFlexibleArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCFlexibleArray.h; sourceTree = "<group>"; };
 		80ECDEFE16AEFB4800E467C4 /* KCFlexibleArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCFlexibleArray.m; sourceTree = "<group>"; };
+		80ECDF0016AF1EF100E467C4 /* KCColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCColorPalette.h; sourceTree = "<group>"; };
+		80ECDF0116AF1EF100E467C4 /* KCColorPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCColorPalette.m; sourceTree = "<group>"; };
 		80FFC7D116A5EA4600756027 /* KCWorldTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWorldTest.h; sourceTree = "<group>"; };
 		80FFC7D216A5EA4600756027 /* KCWorldTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldTest.m; sourceTree = "<group>"; };
 		80FFC7D416A5EC0D00756027 /* KCPositionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCPositionTest.h; sourceTree = "<group>"; };
@@ -351,6 +354,8 @@
 				808D4A2116A37CFE00D7E8D9 /* KCWorld.m */,
 				808D4A3A16A38A6800D7E8D9 /* KCKarel.h */,
 				808D4A3B16A38A6800D7E8D9 /* KCKarel.m */,
+				80ECDF0016AF1EF100E467C4 /* KCColorPalette.h */,
+				80ECDF0116AF1EF100E467C4 /* KCColorPalette.m */,
 				80ECDEE716AEEA4800E467C4 /* KCCounter.h */,
 				80ECDEE816AEEA4800E467C4 /* KCCounter.m */,
 				80C1784316A73CB70068B006 /* KCWorldLibrary.h */,
@@ -580,6 +585,7 @@
 				80ECDEF816AEF61000E467C4 /* KCCounterView.m in Sources */,
 				80ECDEFC16AEF95800E467C4 /* KCCounterSlotView.m in Sources */,
 				80ECDEFF16AEFB4800E467C4 /* KCFlexibleArray.m in Sources */,
+				80ECDF0216AF1EF200E467C4 /* KCColorPalette.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

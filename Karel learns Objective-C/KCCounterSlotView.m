@@ -37,10 +37,8 @@
 
 - (void)setValue:(int)value
 {
-    if (value != _value) {
-        _value = value;
-        self.label.text = [NSString stringWithFormat:@"%i", value];
-    }
+    _value = value;
+    self.label.text = [NSString stringWithFormat:@"%i", value];
 }
 
 - (id)initWithFrame:(CGRect)frame

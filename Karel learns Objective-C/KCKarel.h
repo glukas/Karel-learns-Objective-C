@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "KCWorld.h"
 #import "KCCounter.h"
+#import "KCColorPalette.h"
 
 typedef int KCCount;
 static KCCount KCUnlimited = INT_MAX;
@@ -36,6 +37,16 @@ static KCCount KCUnlimited = INT_MAX;
 
 - (void)paintCorner:(UIColor*)color;
 
+//first value: address of color (0-5)
+- (void)paintCornerWithColorFromPaletteUsingCounter;
+
+//first value: red (0-10)
+//second value: green(0-10)
+//third value: blue (0-10)
+//fourth value: address of color (0-5);
+- (void)setColorUsingCounter;
+
+
 //conditions
 
 - (BOOL)beepersPresent;
@@ -61,7 +72,7 @@ static KCCount KCUnlimited = INT_MAX;
 - (BOOL)facingSouth;
 
 
-@property (readonly) KCCounter * counter;
-
+@property (readonly, strong) KCCounter * counter;
+@property (readonly) KCColorPalette * colorPalette;
 
 @end

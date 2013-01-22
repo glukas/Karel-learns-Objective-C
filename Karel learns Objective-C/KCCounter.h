@@ -33,6 +33,12 @@
 //precondition: index < self.numberOfSlots
 - (int)valueAtSlotWithIndex:(int)index;
 
+//access a value counting from the end of the stack of slots
+//if indexFromBehind is 0, the method will return the same as valueAtLastSlot:
+//precondition: indexFromBehind < numberOfSlots
+- (int)valueAtSlotWithInverseIndex:(int)indexFromBehind;
+
+
 //precondition: not empty
 //add one to the last slot
 - (void)incrementValueAtLastSlot;
