@@ -63,6 +63,16 @@
 		80C1784E16A7664C0068B006 /* KCWorldPropertySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784C16A7664C0068B006 /* KCWorldPropertySelectionViewController.m */; };
 		80EC223516ACA1AB00C8E764 /* ArtistKarel1.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 80EC223416ACA1AB00C8E764 /* ArtistKarel1.kcw */; };
 		80EC223816ACA23100C8E764 /* ArtistKarel2.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 80EC223716ACA23100C8E764 /* ArtistKarel2.kcw */; };
+		80ECDEE916AEEA4800E467C4 /* KCCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDEE816AEEA4800E467C4 /* KCCounter.m */; };
+		80ECDEEA16AEEA4800E467C4 /* KCCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDEE816AEEA4800E467C4 /* KCCounter.m */; };
+		80ECDEEE16AEEFBE00E467C4 /* KCCountingKarel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDEED16AEEFBE00E467C4 /* KCCountingKarel.m */; };
+		80ECDEEF16AEEFBE00E467C4 /* KCCountingKarel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDEED16AEEFBE00E467C4 /* KCCountingKarel.m */; };
+		80ECDEF416AEF25400E467C4 /* CountingKarel.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 80ECDEF316AEF25400E467C4 /* CountingKarel.kcw */; };
+		80ECDEF516AEF25400E467C4 /* CountingKarel.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 80ECDEF316AEF25400E467C4 /* CountingKarel.kcw */; };
+		80ECDEF816AEF61000E467C4 /* KCCounterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDEF716AEF61000E467C4 /* KCCounterView.m */; };
+		80ECDEF916AEF61000E467C4 /* KCCounterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDEF716AEF61000E467C4 /* KCCounterView.m */; };
+		80ECDEFC16AEF95800E467C4 /* KCCounterSlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDEFB16AEF95800E467C4 /* KCCounterSlotView.m */; };
+		80ECDEFF16AEFB4800E467C4 /* KCFlexibleArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDEFE16AEFB4800E467C4 /* KCFlexibleArray.m */; };
 		80FFC7D316A5EA4600756027 /* KCWorldTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D216A5EA4600756027 /* KCWorldTest.m */; };
 		80FFC7D616A5EC0D00756027 /* KCPositionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D516A5EC0D00756027 /* KCPositionTest.m */; };
 		80FFC7D916A5F1C200756027 /* KCHeadedPositionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D816A5F1C200756027 /* KCHeadedPositionTest.m */; };
@@ -154,6 +164,17 @@
 		80C1784C16A7664C0068B006 /* KCWorldPropertySelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldPropertySelectionViewController.m; sourceTree = "<group>"; };
 		80EC223416ACA1AB00C8E764 /* ArtistKarel1.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ArtistKarel1.kcw; path = ../ArtistKarel1.kcw; sourceTree = "<group>"; };
 		80EC223716ACA23100C8E764 /* ArtistKarel2.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ArtistKarel2.kcw; path = ../ArtistKarel2.kcw; sourceTree = "<group>"; };
+		80ECDEE716AEEA4800E467C4 /* KCCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCCounter.h; sourceTree = "<group>"; };
+		80ECDEE816AEEA4800E467C4 /* KCCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCCounter.m; sourceTree = "<group>"; };
+		80ECDEEC16AEEFBE00E467C4 /* KCCountingKarel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCCountingKarel.h; sourceTree = "<group>"; };
+		80ECDEED16AEEFBE00E467C4 /* KCCountingKarel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCCountingKarel.m; sourceTree = "<group>"; };
+		80ECDEF316AEF25400E467C4 /* CountingKarel.kcw */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text; path = CountingKarel.kcw; sourceTree = "<group>"; };
+		80ECDEF616AEF61000E467C4 /* KCCounterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCCounterView.h; sourceTree = "<group>"; };
+		80ECDEF716AEF61000E467C4 /* KCCounterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCCounterView.m; sourceTree = "<group>"; };
+		80ECDEFA16AEF95800E467C4 /* KCCounterSlotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCCounterSlotView.h; sourceTree = "<group>"; };
+		80ECDEFB16AEF95800E467C4 /* KCCounterSlotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCCounterSlotView.m; sourceTree = "<group>"; };
+		80ECDEFD16AEFB4700E467C4 /* KCFlexibleArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCFlexibleArray.h; sourceTree = "<group>"; };
+		80ECDEFE16AEFB4800E467C4 /* KCFlexibleArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCFlexibleArray.m; sourceTree = "<group>"; };
 		80FFC7D116A5EA4600756027 /* KCWorldTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWorldTest.h; sourceTree = "<group>"; };
 		80FFC7D216A5EA4600756027 /* KCWorldTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldTest.m; sourceTree = "<group>"; };
 		80FFC7D416A5EC0D00756027 /* KCPositionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCPositionTest.h; sourceTree = "<group>"; };
@@ -304,6 +325,10 @@
 			children = (
 				808D4A3E16A38F8900D7E8D9 /* KCSquareView.h */,
 				808D4A3F16A38F8900D7E8D9 /* KCSquareView.m */,
+				80ECDEF616AEF61000E467C4 /* KCCounterView.h */,
+				80ECDEF716AEF61000E467C4 /* KCCounterView.m */,
+				80ECDEFA16AEF95800E467C4 /* KCCounterSlotView.h */,
+				80ECDEFB16AEF95800E467C4 /* KCCounterSlotView.m */,
 				80931BEF16A4C8D700F59C30 /* KCKarelView.h */,
 				80931BF016A4C8D700F59C30 /* KCKarelView.m */,
 				80931BE816A4830300F59C30 /* KCWallView.h */,
@@ -326,6 +351,8 @@
 				808D4A2116A37CFE00D7E8D9 /* KCWorld.m */,
 				808D4A3A16A38A6800D7E8D9 /* KCKarel.h */,
 				808D4A3B16A38A6800D7E8D9 /* KCKarel.m */,
+				80ECDEE716AEEA4800E467C4 /* KCCounter.h */,
+				80ECDEE816AEEA4800E467C4 /* KCCounter.m */,
 				80C1784316A73CB70068B006 /* KCWorldLibrary.h */,
 				80C1784416A73CB70068B006 /* KCWorldLibrary.m */,
 			);
@@ -337,6 +364,8 @@
 			children = (
 				80931BE516A4694000F59C30 /* KCMatrix.h */,
 				80931BE616A4694000F59C30 /* KCMatrix.m */,
+				80ECDEFD16AEFB4700E467C4 /* KCFlexibleArray.h */,
+				80ECDEFE16AEFB4800E467C4 /* KCFlexibleArray.m */,
 			);
 			name = Structure;
 			sourceTree = "<group>";
@@ -356,6 +385,7 @@
 		8094F58816AB6C5900675294 /* Worlds */ = {
 			isa = PBXGroup;
 			children = (
+				80ECDEF316AEF25400E467C4 /* CountingKarel.kcw */,
 				80EC223416ACA1AB00C8E764 /* ArtistKarel1.kcw */,
 				80EC223716ACA23100C8E764 /* ArtistKarel2.kcw */,
 				8094F59316AB6E8300675294 /* ColorByNumbersKarel2.kcw */,
@@ -377,6 +407,8 @@
 				80FFC7E716A6305100756027 /* KCStoneMasonKarel.m */,
 				8094F59016AB6E5B00675294 /* KCColorByNumbersKarel.h */,
 				8094F59116AB6E5B00675294 /* KCColorByNumbersKarel.m */,
+				80ECDEEC16AEEFBE00E467C4 /* KCCountingKarel.h */,
+				80ECDEED16AEEFBE00E467C4 /* KCCountingKarel.m */,
 				8094F58D16AB6D8400675294 /* KCArtistKarel.h */,
 				8094F58E16AB6D8400675294 /* KCArtistKarel.m */,
 			);
@@ -485,6 +517,7 @@
 				8094F59616AB6E8400675294 /* ColorByNumbersKarel1.kcw in Resources */,
 				80EC223516ACA1AB00C8E764 /* ArtistKarel1.kcw in Resources */,
 				80EC223816ACA23100C8E764 /* ArtistKarel2.kcw in Resources */,
+				80ECDEF416AEF25400E467C4 /* CountingKarel.kcw in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				808D4A1116A37CB100D7E8D9 /* InfoPlist.strings in Resources */,
+				80ECDEF516AEF25400E467C4 /* CountingKarel.kcw in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +575,11 @@
 				8094F56B16AB04D200675294 /* KCSuperKarel.m in Sources */,
 				8094F58F16AB6D8400675294 /* KCArtistKarel.m in Sources */,
 				8094F59216AB6E5B00675294 /* KCColorByNumbersKarel.m in Sources */,
+				80ECDEE916AEEA4800E467C4 /* KCCounter.m in Sources */,
+				80ECDEEE16AEEFBE00E467C4 /* KCCountingKarel.m in Sources */,
+				80ECDEF816AEF61000E467C4 /* KCCounterView.m in Sources */,
+				80ECDEFC16AEF95800E467C4 /* KCCounterSlotView.m in Sources */,
+				80ECDEFF16AEFB4800E467C4 /* KCFlexibleArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +605,9 @@
 				80C1784616A73CB70068B006 /* KCWorldLibrary.m in Sources */,
 				80C1784A16A74A2D0068B006 /* KCWorldEditorViewController.m in Sources */,
 				80C1784E16A7664C0068B006 /* KCWorldPropertySelectionViewController.m in Sources */,
+				80ECDEEA16AEEA4800E467C4 /* KCCounter.m in Sources */,
+				80ECDEEF16AEEFBE00E467C4 /* KCCountingKarel.m in Sources */,
+				80ECDEF916AEF61000E467C4 /* KCCounterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

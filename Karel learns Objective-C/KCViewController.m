@@ -8,10 +8,11 @@
 
 #import "KCViewController.h"
 #import "KCWorldLibrary.h"
+#import "KCCounterView.h"
 
 static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
 
-@interface KCViewController () 
+@interface KCViewController () <KCounterViewDatasource>
 
 @property (nonatomic) BOOL karelRunning;
 @end
@@ -40,7 +41,25 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
     }
 }
 
+- (void)setCounterView:(KCCounterView *)counterView
+{
+    if (counterView != _counterView) {
+        _counterView = counterView;
+        counterView.datasource = self;
+    }
+}
 
+#pragma mark KCCounterViewDatasource
+
+- (int)numberOfSlotsForCounterView:(KCCounterView *)counterView
+{
+    return self.karel.counter.numberOfSlots;
+}
+
+- (int)valueAtSlotWithIndex:(int)indexOfSlot forCounterView:(KCCounterView *)counterView
+{
+    return [self.karel.counter valueAtSlotWithIndex:indexOfSlot];
+}
 
 #pragma mark KCWorldViewDatasource
 
@@ -109,6 +128,7 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
         [self loadWorldWithName:lastWorldOpened];
     }
     [self.worldView reloadWorld];
+    [self.counterView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -118,6 +138,7 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(worldModelChanged:) name:KCWorldChangedNotification object:self.world];
     }
     [self.worldView setNeedsLayout];
+    [self.counterView setNeedsLayout];
 }
 
 - (void)worldModelChanged:(NSNotification*)notification
@@ -127,6 +148,7 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
         [self.worldView reloadSquareAtPosition:position];
     }
     [self.worldView reloadKarel];
+    [self.counterView reloadData];
 }
 
 

@@ -13,13 +13,19 @@
 @interface KCMatrix : NSObject
 
 //the KCMatrix maps positions in two dimenstion to objects
+//it has no fixed size
+//imagine it as a very large matrix initialized with nil
+//(this is of course not how it is implemented)
 
-//object must be non-nil
-- (void)setObject:(id)object AtPosition:(KCPosition*)position;
+
+//if object is nil, the position will be 'cleared'
+- (void)setObject:(id)object atPosition:(KCPosition*)position;
 
 //result is nil if no object at position
 - (id)objectAtPosition:(KCPosition*)position;
 
+
+//the number of non-nil entries
 @property (readonly) NSUInteger count;
 
 @end

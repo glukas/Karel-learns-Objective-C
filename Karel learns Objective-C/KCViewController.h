@@ -10,14 +10,19 @@
 #import "KCWorldSelectionViewController.h"
 #import "KCWorldView.h"
 #import "KCWorld.h"
-#import "KCKarel.h"
+#import "KCCounterView.h"
+
 @interface KCViewController : UIViewController <KCWorldSelectionPresenterProtocol, KCWorldViewDatasource>
 
 //view
 @property (weak, nonatomic) IBOutlet KCWorldView *worldView;
+@property (weak, nonatomic) IBOutlet KCCounterView * counterView;
+
 
 //model
 @property (nonatomic, strong) KCWorld * world;
 @property (nonatomic, strong) KCKarel * karel;
+
+
 
 @end

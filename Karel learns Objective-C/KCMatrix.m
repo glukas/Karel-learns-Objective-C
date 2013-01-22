@@ -39,9 +39,13 @@
     return self.positionObjectDictionary.count;
 }
 
-- (void)setObject:(id)object AtPosition:(KCPosition *)position
+- (void)setObject:(id)object atPosition:(KCPosition *)position
 {
-    [self.positionObjectDictionary setObject:object forKey:position];
+    if (object) {
+        [self.positionObjectDictionary setObject:object forKey:position];
+    } else {
+        [self.positionObjectDictionary removeObjectForKey:position];
+    }
 }
 
 - (id)objectAtPosition:(KCPosition *)position

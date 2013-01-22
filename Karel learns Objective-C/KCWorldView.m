@@ -65,7 +65,7 @@
         CGRect sqrect = [self frameForSquareViewAtPosition:position];
         square= [[KCSquareView alloc] initWithFrame:sqrect];
         [self addSubview:square];
-        [self.squareViews setObject:square AtPosition:position];
+        [self.squareViews setObject:square atPosition:position];
     } else {
         square.hidden = NO;
     }

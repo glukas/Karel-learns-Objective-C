@@ -15,6 +15,15 @@
 @end
 
 @implementation KCKarel
+@synthesize counter = _counter;
+
+- (KCCounter *)counter
+{
+    if (!_counter) {
+        _counter = [[KCCounter alloc] initWithKarel:self];
+    } return _counter;
+}
+
 
 - (id)initWithWorld:(KCWorld *)world numberOfBeepers:(KCCount)count
 {

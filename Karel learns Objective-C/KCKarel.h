@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "KCWorld.h"
-
+#import "KCCounter.h"
 
 typedef int KCCount;
 static KCCount KCUnlimited = INT_MAX;
 
 @class KCWorld;
+@class KCCounter;
 
 @interface KCKarel : NSObject <NSCopying>
 
@@ -58,6 +59,9 @@ static KCCount KCUnlimited = INT_MAX;
 - (BOOL)facingWest;
 - (BOOL)facingNorth;
 - (BOOL)facingSouth;
+
+
+@property (readonly) KCCounter * counter;
 
 
 @end
