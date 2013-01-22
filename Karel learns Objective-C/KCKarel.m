@@ -74,6 +74,7 @@
     UIColor * color = [UIColor colorWithRed:red/10.0 green:green/10.0 blue:blue/10.0 alpha:1];
     [self.colorPalette setColor:color atIndex:index];
     
+    [self.world nextTurn];
 }
 
 

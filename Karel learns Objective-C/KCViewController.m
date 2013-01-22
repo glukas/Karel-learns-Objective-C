@@ -8,11 +8,12 @@
 
 #import "KCViewController.h"
 #import "KCWorldLibrary.h"
-#import "KCCounterView.h"
+#import "KCSlotContainerView.h"
+#import "KCCounterSlotView.h"
 
 static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
 
-@interface KCViewController () <KCounterViewDatasource>
+@interface KCViewController () <KCSlotContainerViewDatasource>
 
 @property (nonatomic) BOOL karelRunning;
 @end
@@ -41,25 +42,59 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
     }
 }
 
-- (void)setCounterView:(KCCounterView *)counterView
+- (void)setCounterView:(KCSlotContainerView *)counterView
 {
     if (counterView != _counterView) {
         _counterView = counterView;
+        [counterView setBackgroundColor:[UIColor darkGrayColor]];
         counterView.datasource = self;
+    }
+}
+
+- (void)setPalletteView:(KCSlotContainerView *)palletteView
+{
+    if (palletteView != _palletteView) {
+        _palletteView = palletteView;
+        [palletteView setBackgroundColor:[UIColor darkGrayColor]];
+        palletteView.datasource = self;
     }
 }
 
 #pragma mark KCCounterViewDatasource
 
-- (int)numberOfSlotsForCounterView:(KCCounterView *)counterView
+- (int)numberOfSlotsForContainer:(KCSlotContainerView *)container
 {
-    return self.karel.counter.numberOfSlots;
+    int result;
+    if (container == self.counterView) {
+        result = self.karel.counter.numberOfSlots;
+    } else if (container == self.palletteView) {
+        result = self.karel.colorPalette.capacity;
+    }
+    return result;
 }
 
-- (int)valueAtSlotWithIndex:(int)indexOfSlot forCounterView:(KCCounterView *)counterView
+- (UIView*)slotViewForContainer:(KCSlotContainerView *)container atIndex:(NSUInteger)index
 {
-    return [self.karel.counter valueAtSlotWithIndex:indexOfSlot];
+    UIView * result;
+    if (container == self.counterView) {
+        result =  [[KCCounterSlotView alloc] init];
+        [result setBackgroundColor:[UIColor blackColor]];
+    } else if (container == self.palletteView) {
+        result = [[UIView alloc] init];
+    }
+    return result;
 }
+
+- (void)updateSlotView:(UIView *)view fromContainer:(KCSlotContainerView *)container atIndex:(NSUInteger)index
+{
+    if (container == self.counterView) {
+        KCCounterSlotView * slot = (id)view;
+        [slot setValue:[self.karel.counter valueAtSlotWithIndex:index]];
+    } else if (container == self.palletteView) {
+        view.backgroundColor = [self.karel.colorPalette colorAtIndex:index];
+    }
+}
+
 
 #pragma mark KCWorldViewDatasource
 
@@ -131,6 +166,7 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
     }
     [self.worldView reloadWorld];
     [self.counterView reloadData];
+    [self.palletteView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -151,6 +187,7 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
     }
     [self.worldView reloadKarel];
     [self.counterView reloadData];
+    [self.palletteView reloadData];
 }
 
 

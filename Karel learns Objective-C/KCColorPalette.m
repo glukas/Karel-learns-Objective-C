@@ -35,7 +35,9 @@
 
 - (UIColor*)colorAtIndex:(NSUInteger)index
 {
-    return [self.internalColors objectAtIndex:index];
+    UIColor * color = [self.internalColors objectAtIndex:index];
+    //NSLog(@"color: %@", color);
+    return color;
 }
 
 - (void)setColor:(UIColor *)color atIndex:(NSUInteger)index

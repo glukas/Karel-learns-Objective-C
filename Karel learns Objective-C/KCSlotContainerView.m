@@ -1,27 +1,21 @@
 //
-//  KCCounterView.m
+//  KCSlotContainerView.m
 //  Karel learns Objective-C
 //
 //  Created by Lukas Gianinazzi on 22.01.13.
 //  Copyright (c) 2013 Lukas Gianinazzi. All rights reserved.
 //
 
-#import "KCCounterView.h"
-#import "KCCounterSlotView.h"
+#import "KCSlotContainerView.h"
 #import "KCFlexibleArray.h"
 
-@interface KCCounterView()
-
+@interface KCSlotContainerView()
 @property (nonatomic, strong) KCFlexibleArray * slotViews;
 
 @property (nonatomic) int currentNumberOfSlots;
-
 @end
 
-
-
-
-@implementation KCCounterView
+@implementation KCSlotContainerView
 
 - (KCFlexibleArray *)slotViews
 {
@@ -33,7 +27,7 @@
 - (void)layoutSubviews
 {
     CGRect slotFrame = CGRectMake(0, 0, self.frame.size.height, self.frame.size.height);
-    KCCounterSlotView * slot;
+    UIView * slot;
     for (int i = 0; i < self.currentNumberOfSlots; i++) {
         slot = [self.slotViews objectAtIndex:i];
         slot.frame = slotFrame;
@@ -44,22 +38,24 @@
 
 - (void)reloadSlotAtIndex:(int)index
 {
-    KCCounterSlotView * slot = [self.slotViews objectAtIndex:index];
+    UIView * slot = [self.slotViews objectAtIndex:index];
     if (!slot) {
-        slot = [[KCCounterSlotView alloc] init];
-        slot.backgroundColor = [UIColor darkGrayColor];
+        slot = [self.datasource slotViewForContainer:self atIndex:index];
         [self.slotViews setObject:slot atIndex:index];
         [self addSubview:slot];
-    } else {
-        slot.hidden = NO;
     }
-    slot.value = [self.datasource valueAtSlotWithIndex:index forCounterView:self];
+    
+    slot.hidden = NO;
+    
+    if ([self.datasource respondsToSelector:@selector(updateSlotView:fromContainer:atIndex:)]) {
+        [self.datasource updateSlotView:slot fromContainer:self atIndex:index];
+    }
 }
 
 - (void)reloadData
 {
-    self.backgroundColor = [UIColor darkGrayColor];
-    int numberOfSlots = [self.datasource numberOfSlotsForCounterView:self];
+    //self.backgroundColor = [UIColor darkGrayColor];
+    int numberOfSlots = [self.datasource numberOfSlotsForContainer:self];
     self.currentNumberOfSlots = numberOfSlots;
     
     //hide extra slots
@@ -75,6 +71,9 @@
     
     [self setNeedsLayout];
 }
+
+
+
 
 - (id)initWithFrame:(CGRect)frame
 {
