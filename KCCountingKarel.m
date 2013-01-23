@@ -23,37 +23,22 @@
     
     //set color at index 0 to red
     [self.counter pushSlot];//index
-    [self.counter pushSlot];//blue
-    [self.counter pushSlot];//green
-    [self.counter pushSlot];//red
-    while ([self.counter valueAtLastSlot] < 10) {
-        [self.counter incrementValueAtLastSlot];
-    }
+    [self pushRedColor];
     [self setColorUsingCounter];
     
     //paint corner using color at index 0
     [self.counter pushSlot];//index
     [self paintCornerWithColorFromPaletteUsingCounter];
-    
-    
-    
-    /*
-    //set color at index 1 to blue
-    [self.counter pushSlot];//index
-    [self.counter incrementValueAtLastSlot];
+}
+
+- (void)pushRedColor
+{
     [self.counter pushSlot];//blue
+    [self.counter pushSlot];//green
+    [self.counter pushSlot];//red
     while ([self.counter valueAtLastSlot] < 10) {
         [self.counter incrementValueAtLastSlot];
     }
-    [self.counter pushSlot];//green
-    [self.counter pushSlot];//red
-    [self setColorUsingCounter];
-    [self move];
-    
-    //paint corner using color at index 1
-    [self.counter pushSlot];//index
-    [self.counter incrementValueAtLastSlot];
-    [self paintCornerWithColorFromPaletteUsingCounter];*/
 }
 
 //looks at last value of the counter and puts that many beepers down
