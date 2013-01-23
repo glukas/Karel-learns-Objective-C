@@ -40,10 +40,14 @@
 
 - (NSArray *)namesOfWorlds
 {
-    NSArray * filesInBundle = [self.bundleWorldLibrary matchingFiles];
-    NSArray * filesInDocumentsDirectory = [self.documentsWorldLibrary matchingFiles];
-    return [filesInBundle arrayByAddingObjectsFromArray:filesInDocumentsDirectory];
+    if (!_namesOfWorlds) {
+        NSArray * filesInBundle = [self.bundleWorldLibrary matchingFiles];
+        NSArray * filesInDocumentsDirectory = [self.documentsWorldLibrary matchingFiles];
+        _namesOfWorlds = [filesInBundle arrayByAddingObjectsFromArray:filesInDocumentsDirectory];
+    }
+    return _namesOfWorlds;
 }
+
 
 - (void)setTableView:(UITableView *)tableView
 {
@@ -107,6 +111,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    _namesOfWorlds = nil;
     [self.tableView reloadData];
 }
 
