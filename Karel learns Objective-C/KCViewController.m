@@ -149,11 +149,6 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
 {
     [self.world removeKarel:self.karel];
     self.world = [KCWorld worldWithName:world];
-    if (!self.world) {
-        KCWorldLibrary * library = [KCWorldLibrary defaultLibrary];
-        NSURL * url = [[library.libraryURL URLByAppendingPathComponent:world] URLByAppendingPathExtension:library.extension];
-        self.world = [KCWorld worldWithURL:url];
-    }
     [self.world addWallBorders];
     self.karel = [[self.world karelsInWorld] anyObject];
 }

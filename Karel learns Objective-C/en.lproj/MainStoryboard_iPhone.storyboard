@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C2034" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C2034" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -131,23 +131,24 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of New World" minimumFontSize="17" id="NZu-tH-bNZ">
-                                                    <rect key="frame" x="8" y="7" width="279" height="30"/>
+                                                    <rect key="frame" x="20" y="7" width="260" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="nameOfWorldChanged:" destination="aeF-Mp-WD4" eventType="valueChanged" id="5HX-GP-J2e"/>
                                                         <action selector="nameOfWorldChanged:" destination="aeF-Mp-WD4" eventType="editingDidEnd" id="Q4A-rl-xKY"/>
+                                                        <action selector="nameOfWorldChanged:" destination="aeF-Mp-WD4" eventType="editingChanged" id="nLb-hb-vTP"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="159" id="MHh-Da-f8W">
-                                        <rect key="frame" x="0.0" y="55" width="320" height="159"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="145" id="MHh-Da-f8W">
+                                        <rect key="frame" x="0.0" y="55" width="320" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="158"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="144"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="20" id="HoL-1e-QoE">
@@ -163,13 +164,13 @@
                                                     </connections>
                                                 </slider>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Width" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LRV-iZ-XaG">
-                                                    <rect key="frame" x="20" y="7" width="44" height="21"/>
+                                                    <rect key="frame" x="20" y="7" width="260" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Height" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3es-ZJ-aSO">
-                                                    <rect key="frame" x="20" y="73" width="50" height="21"/>
+                                                    <rect key="frame" x="20" y="73" width="260" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -179,7 +180,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="nxl-hF-x9d" style="IBUITableViewCellStyleDefault" id="s4x-mw-VZo">
-                                        <rect key="frame" x="0.0" y="214" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="200" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -200,6 +201,37 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="4gC-Rl-8zV">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="90" id="IXn-It-PiU">
+                                        <rect key="frame" x="0.0" y="265" width="320" height="92"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="KCKarel" minimumFontSize="17" id="tvf-FT-XTt">
+                                                    <rect key="frame" x="20" y="45" width="260" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="nameOfWorldChanged:" destination="aeF-Mp-WD4" eventType="editingDidEnd" id="Aqp-rt-9LI"/>
+                                                        <action selector="nameOfWorldChanged:" destination="aeF-Mp-WD4" eventType="valueChanged" id="YkI-ku-q2f"/>
+                                                    </connections>
+                                                </textField>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Karel class name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d71-Pa-iH7">
+                                                    <rect key="frame" x="20" y="16" width="131" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Word 5x5" id="bD9-xG-3cY">
@@ -212,6 +244,7 @@
                     <connections>
                         <outlet property="createWorldCell" destination="s4x-mw-VZo" id="uZP-Jl-qgR"/>
                         <outlet property="heightSlider" destination="lrs-1P-7rA" id="acS-l8-2BE"/>
+                        <outlet property="karelClassNameField" destination="tvf-FT-XTt" id="fPt-p6-oh8"/>
                         <outlet property="nameField" destination="NZu-tH-bNZ" id="Ars-Ul-KAJ"/>
                         <outlet property="widthSlider" destination="HoL-1e-QoE" id="w1p-bb-LOg"/>
                     </connections>
@@ -297,6 +330,7 @@
                 <relationship kind="action" name="widthChanged:"/>
                 <relationship kind="outlet" name="createWorldCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="heightSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="karelClassNameField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="widthSlider" candidateClass="UISlider"/>
             </relationships>

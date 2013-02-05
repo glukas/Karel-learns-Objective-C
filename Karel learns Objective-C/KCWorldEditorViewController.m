@@ -8,6 +8,10 @@
 
 #import "KCWorldEditorViewController.h"
 #import "KCWorldLibrary.h"
+#import "KCKarelToken.h"
+
+#define KC_DEFAULT_TURN_LENGTH 0.4
+
 @interface KCWorldEditorViewController ()
 
 @end
@@ -25,10 +29,10 @@
 {
     _sizeOfWorld = sizeOfWorld;
     self.world = [[KCWorld alloc] init];
+    self.world.turnLength = KC_DEFAULT_TURN_LENGTH;
     self.world.size = sizeOfWorld;
     [self.world addWallBorders];
 }
-
 
 - (void)swipeRight:(UISwipeGestureRecognizer*)sender
 {
@@ -111,6 +115,18 @@
     [tap requireGestureRecognizerToFail:right];
     [tap requireGestureRecognizerToFail:down];
     [self.worldView addGestureRecognizer:tap];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.karelClassName.length) {
+        self.karel = [[KCKarelToken alloc] initWithWorld:self.world numberOfBeepers:KCUnlimited];
+        [(id)self.karel setClassName:self.karelClassName];
+        [(id)self.karel setNumberOfBeepersInBag:KCUnlimited];
+        [self.world setPosition:[KCHeadedPosition positionWithX:1 Y:self.sizeOfWorld.height orientation:east] ofKarel:self.karel];
+        [self.worldView reloadKarel];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

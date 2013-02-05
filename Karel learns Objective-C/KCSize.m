@@ -48,7 +48,7 @@
 
 - (NSString *)asString
 {
-    return [NSString stringWithFormat:@"size(%d %d) ", self.width, self.height];
+    return [NSString stringWithFormat:@"%d, %d", self.width, self.height];
 }
 
 - (NSUInteger)hash

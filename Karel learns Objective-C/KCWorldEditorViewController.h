@@ -13,5 +13,6 @@
 
 @property (nonatomic, strong) KCSize * sizeOfWorld;
 @property (nonatomic, strong) NSString * nameOfWorld;
+@property (nonatomic, strong) NSString * karelClassName;
 
 @end

@@ -63,6 +63,7 @@
 		80C1784A16A74A2D0068B006 /* KCWorldEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784816A74A2D0068B006 /* KCWorldEditorViewController.m */; };
 		80C1784D16A7664C0068B006 /* KCWorldPropertySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784C16A7664C0068B006 /* KCWorldPropertySelectionViewController.m */; };
 		80C1784E16A7664C0068B006 /* KCWorldPropertySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1784C16A7664C0068B006 /* KCWorldPropertySelectionViewController.m */; };
+		80E37FA816C18F1700AB7DE1 /* KCKarelToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E37FA716C18F1700AB7DE1 /* KCKarelToken.m */; };
 		80EC223516ACA1AB00C8E764 /* ArtistKarel1.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 80EC223416ACA1AB00C8E764 /* ArtistKarel1.kcw */; };
 		80EC223816ACA23100C8E764 /* ArtistKarel2.kcw in Resources */ = {isa = PBXBuildFile; fileRef = 80EC223716ACA23100C8E764 /* ArtistKarel2.kcw */; };
 		80ECDEE916AEEA4800E467C4 /* KCCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDEE816AEEA4800E467C4 /* KCCounter.m */; };
@@ -170,6 +171,8 @@
 		80C1784816A74A2D0068B006 /* KCWorldEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldEditorViewController.m; sourceTree = "<group>"; };
 		80C1784B16A7664C0068B006 /* KCWorldPropertySelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWorldPropertySelectionViewController.h; sourceTree = "<group>"; };
 		80C1784C16A7664C0068B006 /* KCWorldPropertySelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldPropertySelectionViewController.m; sourceTree = "<group>"; };
+		80E37FA616C18F1700AB7DE1 /* KCKarelToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCKarelToken.h; sourceTree = "<group>"; };
+		80E37FA716C18F1700AB7DE1 /* KCKarelToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCKarelToken.m; sourceTree = "<group>"; };
 		80EC223416ACA1AB00C8E764 /* ArtistKarel1.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ArtistKarel1.kcw; path = ../ArtistKarel1.kcw; sourceTree = "<group>"; };
 		80EC223716ACA23100C8E764 /* ArtistKarel2.kcw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ArtistKarel2.kcw; path = ../ArtistKarel2.kcw; sourceTree = "<group>"; };
 		80ECDEE716AEEA4800E467C4 /* KCCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCCounter.h; sourceTree = "<group>"; };
@@ -366,6 +369,8 @@
 				808D4A2116A37CFE00D7E8D9 /* KCWorld.m */,
 				808D4A3A16A38A6800D7E8D9 /* KCKarel.h */,
 				808D4A3B16A38A6800D7E8D9 /* KCKarel.m */,
+				80E37FA616C18F1700AB7DE1 /* KCKarelToken.h */,
+				80E37FA716C18F1700AB7DE1 /* KCKarelToken.m */,
 				80F0089A16C1616600A941C7 /* NSString+SubstringBetweenDelimiters.h */,
 				80F0089B16C1616700A941C7 /* NSString+SubstringBetweenDelimiters.m */,
 				80ECDF0016AF1EF100E467C4 /* KCColorPalette.h */,
@@ -617,6 +622,7 @@
 				80ABA4DB16AF3A3400AF7DE5 /* KCCountingArtistKarel.m in Sources */,
 				80F0089816C1537400A941C7 /* KCMemoryKarel.m in Sources */,
 				80F0089C16C1616700A941C7 /* NSString+SubstringBetweenDelimiters.m in Sources */,
+				80E37FA816C18F1700AB7DE1 /* KCKarelToken.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

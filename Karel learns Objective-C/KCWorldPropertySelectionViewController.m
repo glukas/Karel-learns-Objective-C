@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *heightSlider;
 @property (weak, nonatomic) IBOutlet UISlider *widthSlider;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
-
+@property (weak, nonatomic) IBOutlet UITextField * karelClassNameField;
 @end
 
 @implementation KCWorldPropertySelectionViewController
@@ -77,11 +77,13 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.nameField resignFirstResponder];
+    [self.karelClassNameField resignFirstResponder];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.nameField resignFirstResponder];
+    [self.karelClassNameField resignFirstResponder];
     BOOL result = NO;
     if (indexPath.row == 2) {
         if ([self validProperties]) {
@@ -120,6 +122,10 @@
     if ([[segue destinationViewController] respondsToSelector:@selector(setSizeOfWorld:)]) {
        
         [(id)[segue destinationViewController] setSizeOfWorld:[self currentSize]];
+    }
+    if ([[segue destinationViewController] respondsToSelector:@selector(setKarelClassName:)]) {
+        
+        [(id)[segue destinationViewController] setKarelClassName:self.karelClassNameField.text];
     }
 }
 

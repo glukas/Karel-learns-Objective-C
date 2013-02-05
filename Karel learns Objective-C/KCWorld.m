@@ -8,6 +8,7 @@
 
 #import "KCWorld.h"
 #import "NSString+SubstringBetweenDelimiters.h"
+#import "KCWorldLibrary.h"
 
 @interface KCWorld()
 //values: KCHeadedPosition key: KCKarel objects
@@ -115,6 +116,8 @@
 
 - (void)addKarel:(KCKarel *)karel atPosition:(KCHeadedPosition *)position
 {
+    NSAssert(karel, @"karel must be non-nil");
+    NSAssert(position, @"position of karel must be non-nil");
     [self setPosition:position ofKarel:karel];
 }
 
@@ -192,6 +195,7 @@
 - (void)setNumberOfBeepers:(int)count atPosition:(KCPosition *)position
 {
     NSAssert(count >= 0, @"beeper count must be positive");
+    NSAssert(position, @"position must exist");
     if (count == 0) {
         NSMutableDictionary * mutableCopy = [self.numberOfBeepersAtPositions mutableCopy];
         [mutableCopy removeObjectForKey:position];
@@ -207,6 +211,7 @@
 
 #pragma mark walls
 
+
 - (BOOL)isWallAtHeadedPosition:(KCHeadedPosition *)position
 {
     BOOL result = NO;
@@ -220,6 +225,7 @@
     
 }
 
+//returns nil if position nil
 - (KCHeadedPosition*)equivalentWallPosition:(KCHeadedPosition*)position
 {
     KCHeadedPosition * result;
@@ -274,6 +280,7 @@
 
 - (void)addWallAtPosition:(KCHeadedPosition *)position
 {
+    NSAssert(position != nil, @"position must be non-nil");
     //modify model
     self.positionsOfWalls = [self.positionsOfWalls setByAddingObject:position];
     //mark down change
@@ -312,21 +319,44 @@
 
 #pragma mark creation
 
-+ (KCWorld*)worldWithName:(NSString *)nameOfWorld
++ (KCWorld*)worldWithNameFromMainBundle:(NSString *)nameOfWorld
 {
     KCWorld * result;
+    
     NSString * path = [[NSBundle mainBundle] pathForResource:nameOfWorld ofType:@"kcw"];
     if (!path) {
         path = [[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:nameOfWorld] stringByAppendingPathExtension:@"kcw"];
     }
-    NSError * error;
-    NSString * worldDescription = [NSString stringWithContentsOfFile:path encoding:NSUnicodeStringEncoding error:&error];
-    if (error) {
-        NSLog(@"error: %@", error);
+    
+    NSString * description = [NSString stringWithContentsOfFile:path encoding:NSUnicodeStringEncoding error:nil];
+    if (description) {
+        result = [self worldFromString:description];
     }
-    if (worldDescription) {
-        result = [self worldFromString:worldDescription];
+    
+    return result;
+}
+
++ (KCWorld*)worldWithNameFromDefaultLibrary:(NSString*)nameOfWorld
+{
+    KCWorld * result;
+    
+    KCWorldLibrary * library = [KCWorldLibrary defaultLibrary];
+    NSURL * url = [[library.libraryURL URLByAppendingPathComponent:nameOfWorld] URLByAppendingPathExtension:library.extension];
+    
+    result = [self worldWithURL:url];
+    
+    return result;
+}
+
++ (KCWorld*)worldWithName:(NSString *)nameOfWorld
+{
+    KCWorld * result;
+    
+    result = [self worldWithNameFromMainBundle:nameOfWorld];
+    if (!result) {
+        result = [self worldWithNameFromDefaultLibrary:nameOfWorld];
     }
+    
     return result;
 }
 
@@ -416,7 +446,7 @@
     //add karel
     KCKarel * karel = [[self karelsInWorld] anyObject];
     if (karel) {
-        world = [world stringByAppendingString:[karel asString]];
+        world = [world stringByAppendingFormat:@"karel(%@)", [karel asString]];
     }
     
     //add walls
