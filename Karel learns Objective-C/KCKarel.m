@@ -8,13 +8,17 @@
 
 #import "KCKarel.h"
 
+
 @interface KCKarel()
 
 @property (nonatomic) KCCount numberOfBeepersInBag;
 @property (nonatomic) int identification;
+
 @end
 
 @implementation KCKarel
+
+
 
 - (id)initWithWorld:(KCWorld *)world numberOfBeepers:(KCCount)count
 {
@@ -26,6 +30,8 @@
     }
     return self;
 }
+
+
 
 - (void)run
 {
@@ -163,7 +169,7 @@
 
 - (BOOL)isEqual:(id)object
 {
-    BOOL result;
+    BOOL result = NO;
     if ([object isKindOfClass:[KCKarel class]]) {
         if ([object identification] == [self identification]) {
             result = YES;
@@ -191,12 +197,21 @@
 {
     return [self front].orientation == west;
 }
+<<<<<<< HEAD
 
 - (BOOL)facingNorth
 {
     return [self front].orientation == north;
 }
 
+=======
+
+- (BOOL)facingNorth
+{
+    return [self front].orientation == north;
+}
+
+>>>>>>> solution-assignment-3
 - (BOOL)facingSouth
 {
     return [self front].orientation == south;

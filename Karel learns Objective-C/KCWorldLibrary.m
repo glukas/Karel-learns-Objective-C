@@ -27,7 +27,7 @@
     NSURL * url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     KCWorldLibrary * library = [[KCWorldLibrary alloc] init];
     library.libraryURL = url;
-    library.extension = KCWorldFileExtension;
+    library.extension =  KCWorldFileExtension;
     return library;
 }
 

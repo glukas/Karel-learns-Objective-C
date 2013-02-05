@@ -222,8 +222,8 @@
 - (KCHeadedPosition*)equivalentWallPosition:(KCHeadedPosition*)position
 {
     KCHeadedPosition * result;
-    int x;
-    int y;
+    int x = 0;
+    int y = 0;
     KCOrientation orientation;
     if (position.orientation == east) {
         x = position.x+1;
@@ -302,9 +302,9 @@
 - (void)nextTurn
 {
     //notify subscribers of change
-    if (self.modifiedPositions.count) {
-        [self postChangeNotification];
-    }
+    //if (self.modifiedPositions.count) {
+    [self postChangeNotification];
+    //}
     [NSThread sleepForTimeInterval:self.turnLength];
 }
 
@@ -318,7 +318,11 @@
     if (!path) {
         path = [[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:nameOfWorld] stringByAppendingPathExtension:@"kcw"];
     }
-    NSString * worldDescription = [NSString stringWithContentsOfFile:path encoding:NSUnicodeStringEncoding error:nil];
+    NSError * error;
+    NSString * worldDescription = [NSString stringWithContentsOfFile:path encoding:NSUnicodeStringEncoding error:&error];
+    if (error) {
+        NSLog(@"error: %@", error);
+    }
     if (worldDescription) {
         result = [self worldFromString:worldDescription];
     }

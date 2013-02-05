@@ -8,10 +8,13 @@
 
 #import "KCViewController.h"
 #import "KCWorldLibrary.h"
+#import "KCSlotContainerView.h"
+#import "KCCounterSlotView.h"
+#import "KCMemoryKarel.h"
 
 static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
 
-@interface KCViewController () 
+@interface KCViewController () <KCSlotContainerViewDatasource>
 
 @property (nonatomic) BOOL karelRunning;
 @end
@@ -40,6 +43,62 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
     }
 }
 
+- (void)setCounterView:(KCSlotContainerView *)counterView
+{
+    if (counterView != _counterView) {
+        _counterView = counterView;
+        [counterView setBackgroundColor:[UIColor darkGrayColor]];
+        counterView.datasource = self;
+    }
+}
+
+- (void)setPalletteView:(KCSlotContainerView *)palletteView
+{
+    if (palletteView != _palletteView) {
+        _palletteView = palletteView;
+        [palletteView setBackgroundColor:[UIColor darkGrayColor]];
+        palletteView.datasource = self;
+    }
+}
+
+#pragma mark KCCounterViewDatasource
+
+- (int)numberOfSlotsForContainer:(KCSlotContainerView *)container
+{
+    int result = 0;
+    if ([self.karel isKindOfClass:[KCMemoryKarel class]]) {
+        if (container == self.counterView) {
+            result = [(KCMemoryKarel*)self.karel counter].numberOfSlots;
+        } else if (container == self.palletteView) {
+            result = [(KCMemoryKarel*)self.karel colorPalette].capacity;
+        }
+    }
+    return result;
+}
+
+- (UIView*)slotViewForContainer:(KCSlotContainerView *)container atIndex:(NSUInteger)index
+{
+    UIView * result;
+    if (container == self.counterView) {
+        result =  [[KCCounterSlotView alloc] init];
+        [result setBackgroundColor:[UIColor blackColor]];
+    } else if (container == self.palletteView) {
+        result = [[UIView alloc] init];
+    }
+    return result;
+}
+
+- (void)updateSlotView:(UIView *)view fromContainer:(KCSlotContainerView *)container atIndex:(NSUInteger)index
+{
+    if ([self.karel isKindOfClass:[KCMemoryKarel class]]) {
+        if (container == self.counterView) {
+            KCCounterSlotView * slot = (id)view;
+            [slot setValue:[[(KCMemoryKarel*)self.karel counter] valueAtSlotWithIndex:index]];
+        } else if (container == self.palletteView) {
+            view.backgroundColor = [[(KCMemoryKarel*)self.karel colorPalette] colorAtIndex:index];
+        }
+    }
+}
 
 
 #pragma mark KCWorldViewDatasource
@@ -104,11 +163,15 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSString * lastWorldOpened = [[NSUserDefaults standardUserDefaults] objectForKey:KCLastWorldOpenedUserDefaultsKey];
-    if (lastWorldOpened) {
-        [self loadWorldWithName:lastWorldOpened];
+    if (!_world) {
+        NSString * lastWorldOpened = [[NSUserDefaults standardUserDefaults] objectForKey:KCLastWorldOpenedUserDefaultsKey];
+        if (lastWorldOpened) {
+            [self loadWorldWithName:lastWorldOpened];
+        }
     }
     [self.worldView reloadWorld];
+    [self.counterView reloadData];
+    [self.palletteView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -118,6 +181,7 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(worldModelChanged:) name:KCWorldChangedNotification object:self.world];
     }
     [self.worldView setNeedsLayout];
+    [self.counterView setNeedsLayout];
 }
 
 - (void)worldModelChanged:(NSNotification*)notification
@@ -127,6 +191,8 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
         [self.worldView reloadSquareAtPosition:position];
     }
     [self.worldView reloadKarel];
+    [self.counterView reloadData];
+    [self.palletteView reloadData];
 }
 
 

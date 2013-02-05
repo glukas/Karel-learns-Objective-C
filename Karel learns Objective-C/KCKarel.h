@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "KCWorld.h"
+#import "KCCounter.h"
+#import "KCColorPalette.h"
 
+typedef NSUInteger KCCount;
+static KCCount const KCUnlimited = INT_MAX;
 
-typedef int KCCount;
-static KCCount KCUnlimited = INT_MAX;
 
 @class KCWorld;
+@class KCCounter;
 
 @interface KCKarel : NSObject <NSCopying>
 
@@ -30,6 +33,7 @@ static KCCount KCUnlimited = INT_MAX;
 - (void)turnLeft;
 - (void)pickBeeper;//precondition: beepersPresent
 - (void)putBeeper;//precondition: beepersInBag
+
 
 //colors
 
@@ -60,4 +64,9 @@ static KCCount KCUnlimited = INT_MAX;
 - (BOOL)facingSouth;
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> solution-assignment-3
 @end
