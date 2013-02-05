@@ -7,6 +7,7 @@
 //
 
 #import "KCWorld.h"
+#import "NSString+SubstringBetweenDelimiters.h"
 
 @interface KCWorld()
 //values: KCHeadedPosition key: KCKarel objects
@@ -339,27 +340,10 @@
     return result;
 }
 
-+ (NSString *)substringAfterKeyword:(NSString *)keyword betweenLeftDelimiter:(NSString*)leftDelimiter rightDelimiter:(NSString *)rightDelimiter ofString:(NSString*)original;
-{
-    NSString * result;
-    NSRange keywordRange = [original rangeOfString:keyword options:NSCaseInsensitiveSearch];
-    if (keywordRange.location != NSNotFound) {
-        NSRange startOfParenthesis = [original rangeOfString:leftDelimiter options:NSCaseInsensitiveSearch range:NSMakeRange(keywordRange.location, original.length-keywordRange.location)];
-        if (startOfParenthesis.location != NSNotFound) {
-            NSRange endOfParenthesis = [original rangeOfString:rightDelimiter options:NSCaseInsensitiveSearch range:NSMakeRange(startOfParenthesis.location, original.length-startOfParenthesis.location)];
-            if (endOfParenthesis.location != NSNotFound) {
-                NSRange resultRange = NSMakeRange(startOfParenthesis.location+startOfParenthesis.length, endOfParenthesis.location-startOfParenthesis.location-endOfParenthesis.length);
-                result = [original substringWithRange:resultRange];
-            }
-            
-        }
-    }
-    return result;
-}
 
 + (NSString *)findDescriptionOfPropertyWithName:(NSString *)propertyName inWorldDescription:(NSString *)description
 {
-    return [self substringAfterKeyword:propertyName betweenLeftDelimiter:@"(" rightDelimiter:@")" ofString:description];
+    return [description substringAfterKeyword:propertyName betweenLeftDelimiter:@"(" rightDelimiter:@")"];
 }
 
 + (KCWorld*)worldFromString:(NSString *)description
@@ -378,33 +362,13 @@
     //create karel from string
     NSString * karelString = [self findDescriptionOfPropertyWithName:@"karel" inWorldDescription:description];
     if (karelString) {
-        [self karelFromString:karelString inWorld:result];
+        [KCKarel karelFromString:karelString inWorld:result];
     }
     
     return result;
 }
 
-+ (KCKarel *)karelFromString:(NSString *)karelString inWorld:(KCWorld*)world
-{
-    NSString * karelPositionString = [self substringAfterKeyword:@"position" betweenLeftDelimiter:@"[" rightDelimiter:@"]" ofString:karelString];
-    NSString * karelBeeperBagString = [self substringAfterKeyword:@"beeperbag" betweenLeftDelimiter:@"[" rightDelimiter:@"]" ofString:karelString];
-    NSString * karelClass = [self substringAfterKeyword:@"class" betweenLeftDelimiter:@"[" rightDelimiter:@"]" ofString:karelString];
-    if (karelClass == nil) {
-        karelClass = NSStringFromClass([KCKarel class]);
-    }
-    KCCount beeperBagCount;
-    if ([karelBeeperBagString isEqualToString:@"KCUnlimited"]) {
-        beeperBagCount = KCUnlimited;
-    } else {
-        beeperBagCount = [karelBeeperBagString intValue];
-    }
-    
-    KCKarel * karel = [[NSClassFromString(karelClass) alloc] initWithWorld:world numberOfBeepers:beeperBagCount];
-    if (karel) {
-        [world addKarel:karel atPosition:[KCHeadedPosition headedPositionFromString:karelPositionString]];
-    }
-    return karel;
-}
+
 
 + (NSDictionary*)beeperDictionaryFromString:(NSString *)description
 {
@@ -432,7 +396,7 @@
     NSArray * wallDescriptions = [description componentsSeparatedByString:@", "];
     //create each wall position
     for (NSString * wallDescription in wallDescriptions) {
-        KCHeadedPosition * position = [KCHeadedPosition headedPositionFromString:wallDescription];
+        KCHeadedPosition * position = [KCHeadedPosition positionFromString:wallDescription];
         if (position) {
             [result addObject:position];
         }
@@ -450,12 +414,15 @@
     world = [world stringByAppendingFormat:@"speed(%f) ", self.turnLength];
     
     //add karel
-    //todo
+    KCKarel * karel = [[self karelsInWorld] anyObject];
+    if (karel) {
+        world = [world stringByAppendingString:[karel asString]];
+    }
     
     //add walls
     world = [world stringByAppendingFormat:@"walls("];
     for (KCHeadedPosition * position in self.positionsOfWalls) {
-        world = [world stringByAppendingFormat:@"%@, ", position.description];
+        world = [world stringByAppendingFormat:@"%@, ", [position asString]];
     }
     world = [world substringToIndex:world.length-2];//remove last comma
     world = [world stringByAppendingString:@") "];
@@ -465,9 +432,10 @@
     
     for (KCPosition * position in self.numberOfBeepersAtPositions) {
         int count = [[self.numberOfBeepersAtPositions objectForKey:position] intValue];
-        world = [world stringByAppendingFormat:@"%@ %d, ", position.description, count];
+        world = [world stringByAppendingFormat:@"%@ %d, ", [position asString], count];
         
     }
+    
     world = [world substringToIndex:world.length-2];//remove last comma
     world = [world stringByAppendingString:@") "];
     

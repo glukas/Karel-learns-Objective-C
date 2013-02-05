@@ -54,6 +54,11 @@
 }
 
 
+- (NSString *)asString
+{
+    return [self description];
+}
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%d %d", self.x, self.y];

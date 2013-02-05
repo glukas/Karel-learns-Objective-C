@@ -16,7 +16,9 @@
 
 //format: @"x y"
 //precondition: x > 0 && y > 0
-+ (KCPosition*)positionFromString:(NSString*)description;
++ (id)positionFromString:(NSString*)description;
+//compatible with positionFromString
+- (NSString *)asString;
 
 //first two values are relevant, rest is ignored
 //first value must be a string -> x component
@@ -27,5 +29,7 @@
 //note KCPosition is immutable
 @property (readonly) NSUInteger x;
 @property (readonly) NSUInteger y;
+
+
 
 @end

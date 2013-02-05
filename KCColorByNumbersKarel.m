@@ -13,7 +13,6 @@
 - (void)run
 {
 
-    
     UIColor * currentColor = nil;
     
     BOOL notInCorner = YES;

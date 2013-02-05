@@ -29,7 +29,8 @@
 
 - (id)initWithX:(NSUInteger)x Y:(NSUInteger)y orientation:(KCOrientation)orientation
 {
-    self = [super initWithX:x Y:y];
+    KCPosition * unheadedposition = [[KCPosition alloc] initWithX:x Y:y];
+    self = [self initWithPosition:unheadedposition orientation:orientation];
     if (self) {
         NSAssert(orientation == north || orientation == east || orientation == west || orientation == south, @"invalid orientation");
         _orientation = orientation;
@@ -41,7 +42,7 @@
     return [[self alloc] initWithX:x Y:y orientation:orientation];
 }
 
-+ (KCHeadedPosition*)headedPositionFromString:(NSString *)description
++ (id)positionFromString:(NSString *)description
 {
     NSArray * components = [description componentsSeparatedByString:@" "];
     
@@ -62,6 +63,12 @@
     }
     return [[self alloc] initWithPosition:position orientation:orientation];
 }
+
+- (NSString *)asString
+{
+    return [self description];
+}
+
 
 - (KCPosition*)asUnheadedPosition
 {

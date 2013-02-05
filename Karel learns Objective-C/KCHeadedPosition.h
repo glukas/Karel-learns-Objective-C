@@ -25,9 +25,6 @@ static const KCOrientation east = @"e";
 
 + (KCHeadedPosition*)positionWithX:(NSUInteger)x Y:(NSUInteger)y orientation:(KCOrientation)orientation;
 
-//returns nil if invalid
-+ (KCHeadedPosition*)headedPositionFromString:(NSString *)description;
-
 //format: "x y orientation"
 //the orientation should equal the KCOrientation constants
 //(declared in superclass)
@@ -48,5 +45,7 @@ static const KCOrientation east = @"e";
 
 //create a copy without orientation
 - (KCPosition*)asUnheadedPosition;
+
+- (NSString *)asString;
 
 @end

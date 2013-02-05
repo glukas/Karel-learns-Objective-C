@@ -7,7 +7,7 @@
 //
 
 #import "KCKarel.h"
-
+#import "NSString+SubstringBetweenDelimiters.h"
 
 @interface KCKarel()
 
@@ -17,7 +17,6 @@
 @end
 
 @implementation KCKarel
-
 
 
 - (id)initWithWorld:(KCWorld *)world numberOfBeepers:(KCCount)count
@@ -206,6 +205,38 @@
 - (BOOL)facingSouth
 {
     return [self front].orientation == south;
+}
+
+
+#pragma mark creation and export
+
+
+- (NSString *)asString
+{
+    NSString * result = [NSString stringWithFormat:@"class[%@] beeperbag[%d] position[%@]", NSStringFromClass([self class]), self.numberOfBeepersInBag, [[self.world positionOfKarel:self] asString]];
+    return result;
+}
+
++ (KCKarel *)karelFromString:(NSString *)karelString inWorld:(KCWorld*)world
+{
+    NSString * karelPositionString = [karelString substringAfterKeyword:@"position" betweenLeftDelimiter:@"[" rightDelimiter:@"]"];
+    NSString * karelBeeperBagString = [karelString substringAfterKeyword:@"beeperbag" betweenLeftDelimiter:@"[" rightDelimiter:@"]"];
+    NSString * karelClass = [karelString substringAfterKeyword:@"class" betweenLeftDelimiter:@"[" rightDelimiter:@"]"];
+    if (karelClass == nil) {
+        karelClass = NSStringFromClass([KCKarel class]);
+    }
+    KCCount beeperBagCount;
+    if ([karelBeeperBagString isEqualToString:@"KCUnlimited"]) {
+        beeperBagCount = KCUnlimited;
+    } else {
+        beeperBagCount = [karelBeeperBagString intValue];
+    }
+    
+    KCKarel * karel = [[NSClassFromString(karelClass) alloc] initWithWorld:world numberOfBeepers:beeperBagCount];
+    if (karel) {
+        [world addKarel:karel atPosition:[KCHeadedPosition positionFromString:karelPositionString]];
+    }
+    return karel;
 }
 
 @end

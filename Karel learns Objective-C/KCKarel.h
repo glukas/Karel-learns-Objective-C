@@ -20,10 +20,6 @@ static KCCount const KCUnlimited = INT_MAX;
 
 @interface KCKarel : NSObject <NSCopying>
 
-- (id)initWithWorld:(KCWorld *)world numberOfBeepers:(KCCount)count;
-
-@property (nonatomic, weak) KCWorld * world;
-
 //subclass Karel and overwrite run
 - (void)run;
 
@@ -62,5 +58,16 @@ static KCCount const KCUnlimited = INT_MAX;
 - (BOOL)facingWest;
 - (BOOL)facingNorth;
 - (BOOL)facingSouth;
+
+//creation and export:
+- (id)initWithWorld:(KCWorld *)world numberOfBeepers:(KCCount)count;
+
++ (KCKarel *)karelFromString:(NSString *)description inWorld:(KCWorld*)world;
+- (NSString *)asString;
+
+
+//when karel executes an operation, it notifies the world to update karels position in it
+@property (nonatomic, weak) KCWorld * world;
+
 
 @end

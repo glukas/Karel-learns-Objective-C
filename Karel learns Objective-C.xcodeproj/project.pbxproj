@@ -76,6 +76,8 @@
 		80ECDF0216AF1EF200E467C4 /* KCColorPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDF0116AF1EF100E467C4 /* KCColorPalette.m */; };
 		80ECDF0816AF2AD100E467C4 /* KCSlotContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ECDF0716AF2AD000E467C4 /* KCSlotContainerView.m */; };
 		80F0089816C1537400A941C7 /* KCMemoryKarel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F0089716C1537400A941C7 /* KCMemoryKarel.m */; };
+		80F0089C16C1616700A941C7 /* NSString+SubstringBetweenDelimiters.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F0089B16C1616700A941C7 /* NSString+SubstringBetweenDelimiters.m */; };
+		80F0089D16C1616700A941C7 /* NSString+SubstringBetweenDelimiters.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F0089B16C1616700A941C7 /* NSString+SubstringBetweenDelimiters.m */; };
 		80FFC7D316A5EA4600756027 /* KCWorldTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D216A5EA4600756027 /* KCWorldTest.m */; };
 		80FFC7D616A5EC0D00756027 /* KCPositionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D516A5EC0D00756027 /* KCPositionTest.m */; };
 		80FFC7D916A5F1C200756027 /* KCHeadedPositionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFC7D816A5F1C200756027 /* KCHeadedPositionTest.m */; };
@@ -183,8 +185,10 @@
 		80ECDF0116AF1EF100E467C4 /* KCColorPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCColorPalette.m; sourceTree = "<group>"; };
 		80ECDF0616AF2AD000E467C4 /* KCSlotContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCSlotContainerView.h; sourceTree = "<group>"; };
 		80ECDF0716AF2AD000E467C4 /* KCSlotContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCSlotContainerView.m; sourceTree = "<group>"; };
-		80F0089616C1537400A941C7 /* KCMemoryKarel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMemoryKarel.h; sourceTree = "<group>"; };
-		80F0089716C1537400A941C7 /* KCMemoryKarel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMemoryKarel.m; sourceTree = "<group>"; };
+		80F0089616C1537400A941C7 /* KCMemoryKarel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KCMemoryKarel.h; path = "Karel learns Objective-C/KCMemoryKarel.h"; sourceTree = "<group>"; };
+		80F0089716C1537400A941C7 /* KCMemoryKarel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KCMemoryKarel.m; path = "Karel learns Objective-C/KCMemoryKarel.m"; sourceTree = "<group>"; };
+		80F0089A16C1616600A941C7 /* NSString+SubstringBetweenDelimiters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SubstringBetweenDelimiters.h"; sourceTree = "<group>"; };
+		80F0089B16C1616700A941C7 /* NSString+SubstringBetweenDelimiters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SubstringBetweenDelimiters.m"; sourceTree = "<group>"; };
 		80FFC7D116A5EA4600756027 /* KCWorldTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWorldTest.h; sourceTree = "<group>"; };
 		80FFC7D216A5EA4600756027 /* KCWorldTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWorldTest.m; sourceTree = "<group>"; };
 		80FFC7D416A5EC0D00756027 /* KCPositionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCPositionTest.h; sourceTree = "<group>"; };
@@ -356,13 +360,14 @@
 		808D4A1F16A37CD400D7E8D9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				80F0089916C1541200A941C7 /* Memory Karels */,
 				80FFC7E516A6130D00756027 /* Basic */,
 				808D4A2016A37CFE00D7E8D9 /* KCWorld.h */,
 				808D4A2116A37CFE00D7E8D9 /* KCWorld.m */,
-				80F0089616C1537400A941C7 /* KCMemoryKarel.h */,
-				80F0089716C1537400A941C7 /* KCMemoryKarel.m */,
 				808D4A3A16A38A6800D7E8D9 /* KCKarel.h */,
 				808D4A3B16A38A6800D7E8D9 /* KCKarel.m */,
+				80F0089A16C1616600A941C7 /* NSString+SubstringBetweenDelimiters.h */,
+				80F0089B16C1616700A941C7 /* NSString+SubstringBetweenDelimiters.m */,
 				80ECDF0016AF1EF100E467C4 /* KCColorPalette.h */,
 				80ECDF0116AF1EF100E467C4 /* KCColorPalette.m */,
 				80ECDEE716AEEA4800E467C4 /* KCCounter.h */,
@@ -414,18 +419,20 @@
 		80F0089916C1541200A941C7 /* Memory Karels */ = {
 			isa = PBXGroup;
 			children = (
+				80F0089616C1537400A941C7 /* KCMemoryKarel.h */,
+				80F0089716C1537400A941C7 /* KCMemoryKarel.m */,
 				80ECDEEC16AEEFBE00E467C4 /* KCCountingKarel.h */,
 				80ECDEED16AEEFBE00E467C4 /* KCCountingKarel.m */,
 				80ABA4D916AF3A3400AF7DE5 /* KCCountingArtistKarel.h */,
 				80ABA4DA16AF3A3400AF7DE5 /* KCCountingArtistKarel.m */,
 			);
 			name = "Memory Karels";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		80FFC7E116A5FB9000756027 /* Karels */ = {
 			isa = PBXGroup;
 			children = (
-				80F0089916C1541200A941C7 /* Memory Karels */,
 				80FFC7DD16A5FB8A00756027 /* KCBeeperPickingKarel.h */,
 				80FFC7DE16A5FB8A00756027 /* KCBeeperPickingKarel.m */,
 				8094F56916AB04D200675294 /* KCSuperKarel.h */,
@@ -609,6 +616,7 @@
 				80ECDF0816AF2AD100E467C4 /* KCSlotContainerView.m in Sources */,
 				80ABA4DB16AF3A3400AF7DE5 /* KCCountingArtistKarel.m in Sources */,
 				80F0089816C1537400A941C7 /* KCMemoryKarel.m in Sources */,
+				80F0089C16C1616700A941C7 /* NSString+SubstringBetweenDelimiters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +644,7 @@
 				80C1784E16A7664C0068B006 /* KCWorldPropertySelectionViewController.m in Sources */,
 				80ECDEEA16AEEA4800E467C4 /* KCCounter.m in Sources */,
 				80ECDEEF16AEEFBE00E467C4 /* KCCountingKarel.m in Sources */,
+				80F0089D16C1616700A941C7 /* NSString+SubstringBetweenDelimiters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
