@@ -13,18 +13,11 @@
 
 @property (nonatomic) KCCount numberOfBeepersInBag;
 @property (nonatomic) int identification;
-@property (nonatomic, strong) KCColorPalette * internalColorPalette;
+
 @end
 
 @implementation KCKarel
-@synthesize counter = _counter;
 
-- (KCCounter *)counter
-{
-    if (!_counter) {
-        _counter = [[KCCounter alloc] initWithKarel:self];
-    } return _counter;
-}
 
 
 - (id)initWithWorld:(KCWorld *)world numberOfBeepers:(KCCount)count
@@ -38,44 +31,6 @@
     return self;
 }
 
-- (KCColorPalette*)colorPalette
-{
-    return self.internalColorPalette;
-}
-
-
-- (KCColorPalette*)internalColorPalette
-{
-    if (!_internalColorPalette) {
-        _internalColorPalette = [[KCColorPalette alloc] initWithCapacity:6];
-    } return _internalColorPalette;
-}
-
-- (void)paintCornerWithColorFromPaletteUsingCounter
-{
-    int index = [self.counter valueAtLastSlot];
-    [self.counter popSlot];
-    UIColor * color  = [self.colorPalette colorAtIndex:index];
-    [self paintCorner:color];
-}
-
-
-- (void)setColorUsingCounter
-{
-    int red = [self.counter valueAtLastSlot];
-    [self.counter popSlot];
-    int green = [self.counter valueAtLastSlot];
-    [self.counter popSlot];
-    int blue = [self.counter valueAtLastSlot];
-    [self.counter popSlot];
-    int index = [self.counter valueAtLastSlot];
-    [self.counter popSlot];
-    
-    UIColor * color = [UIColor colorWithRed:red/10.0 green:green/10.0 blue:blue/10.0 alpha:1];
-    [self.colorPalette setColor:color atIndex:index];
-    
-    [self.world nextTurn];
-}
 
 
 - (void)run
@@ -214,7 +169,7 @@
 
 - (BOOL)isEqual:(id)object
 {
-    BOOL result;
+    BOOL result = NO;
     if ([object isKindOfClass:[KCKarel class]]) {
         if ([object identification] == [self identification]) {
             result = YES;

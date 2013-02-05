@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-static NSString * KCWorldFileExtension = @"kcw";
+static NSString * const KCWorldFileExtension = @"kcw";
 
 @interface KCWorldLibrary : NSObject
 

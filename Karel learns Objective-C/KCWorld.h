@@ -16,11 +16,11 @@
 #pragma mark change of model notifications
 
 //Posted after any change in model
-static NSString * KCWorldChangedNotification = @"KCWorldChangedNotification";
+static NSString * const KCWorldChangedNotification = @"KCWorldChangedNotification";
 //the userInfo dictionary contains:
 //an NSSet with KCPositions of all the modified positions
 //important: directly setting the properties will not cause a message to be sent
-static NSString * KCWorldChangedNotificationModifiedPositionsKey = @"positions";
+static NSString * const KCWorldChangedNotificationModifiedPositionsKey = @"positions";
 
 
 @interface KCWorld : NSObject

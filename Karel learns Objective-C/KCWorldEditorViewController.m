@@ -70,11 +70,6 @@
     
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [super touchesBegan:touches withEvent:event];
-}
-
 
 - (IBAction)saveButtonTapped:(id)sender
 {

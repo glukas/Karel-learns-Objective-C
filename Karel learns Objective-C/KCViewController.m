@@ -10,6 +10,7 @@
 #import "KCWorldLibrary.h"
 #import "KCSlotContainerView.h"
 #import "KCCounterSlotView.h"
+#import "KCMemoryKarel.h"
 
 static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
 
@@ -64,11 +65,13 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
 
 - (int)numberOfSlotsForContainer:(KCSlotContainerView *)container
 {
-    int result;
-    if (container == self.counterView) {
-        result = self.karel.counter.numberOfSlots;
-    } else if (container == self.palletteView) {
-        result = self.karel.colorPalette.capacity;
+    int result = 0;
+    if ([self.karel isKindOfClass:[KCMemoryKarel class]]) {
+        if (container == self.counterView) {
+            result = [(KCMemoryKarel*)self.karel counter].numberOfSlots;
+        } else if (container == self.palletteView) {
+            result = [(KCMemoryKarel*)self.karel colorPalette].capacity;
+        }
     }
     return result;
 }
@@ -87,11 +90,13 @@ static NSString * KCLastWorldOpenedUserDefaultsKey = @"KCLastWorldOpened";
 
 - (void)updateSlotView:(UIView *)view fromContainer:(KCSlotContainerView *)container atIndex:(NSUInteger)index
 {
-    if (container == self.counterView) {
-        KCCounterSlotView * slot = (id)view;
-        [slot setValue:[self.karel.counter valueAtSlotWithIndex:index]];
-    } else if (container == self.palletteView) {
-        view.backgroundColor = [self.karel.colorPalette colorAtIndex:index];
+    if ([self.karel isKindOfClass:[KCMemoryKarel class]]) {
+        if (container == self.counterView) {
+            KCCounterSlotView * slot = (id)view;
+            [slot setValue:[[(KCMemoryKarel*)self.karel counter] valueAtSlotWithIndex:index]];
+        } else if (container == self.palletteView) {
+            view.backgroundColor = [[(KCMemoryKarel*)self.karel colorPalette] colorAtIndex:index];
+        }
     }
 }
 

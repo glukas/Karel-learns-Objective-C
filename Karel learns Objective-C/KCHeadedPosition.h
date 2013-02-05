@@ -10,10 +10,10 @@
 
 typedef NSString * KCOrientation;
 
-static KCOrientation south = @"s";
-static KCOrientation north = @"n";
-static KCOrientation west = @"w";
-static KCOrientation east = @"e";
+static const KCOrientation south = @"s";
+static const KCOrientation north = @"n";
+static const KCOrientation west = @"w";
+static const KCOrientation east = @"e";
 
 //note: KCHeadedPosition is immutable
 @interface KCHeadedPosition : KCPosition

@@ -11,7 +11,7 @@
 @implementation KCCountingKarel
 
 
-- (void)run
+- (void)run//todo: cleanup: use uniform argument passing policy
 {
     [self pushNumberOfFreeSquaresInFront];
     

@@ -222,8 +222,8 @@
 - (KCHeadedPosition*)equivalentWallPosition:(KCHeadedPosition*)position
 {
     KCHeadedPosition * result;
-    int x;
-    int y;
+    int x = 0;
+    int y = 0;
     KCOrientation orientation;
     if (position.orientation == east) {
         x = position.x+1;
