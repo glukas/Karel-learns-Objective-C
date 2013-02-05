@@ -14,6 +14,7 @@
 
 //format: @"x y"
 + (KCSize*)sizeFromString:(NSString*)string;
+- (NSString *)asString;
 
 @property (readonly) int width;
 @property (readonly) int height;

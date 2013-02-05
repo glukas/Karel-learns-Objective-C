@@ -46,6 +46,11 @@
     return [[KCSize alloc] initWithWidth:w height:h];
 }
 
+- (NSString *)asString
+{
+    return [NSString stringWithFormat:@"size(%d %d) ", self.width, self.height];
+}
+
 - (NSUInteger)hash
 {
     return [[self description] hash];

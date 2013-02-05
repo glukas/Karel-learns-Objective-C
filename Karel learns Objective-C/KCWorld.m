@@ -408,7 +408,7 @@
 {
     NSString * world;
     //define size
-    world = [NSString stringWithFormat:@"size(%d %d) ", self.size.width, self.size.height];
+    world = [NSString stringWithFormat:@"size(%@) ", [self.size asString]];
     
     //define speed
     world = [world stringByAppendingFormat:@"speed(%f) ", self.turnLength];
@@ -435,7 +435,6 @@
         world = [world stringByAppendingFormat:@"%@ %d, ", [position asString], count];
         
     }
-    
     world = [world substringToIndex:world.length-2];//remove last comma
     world = [world stringByAppendingString:@") "];
     
