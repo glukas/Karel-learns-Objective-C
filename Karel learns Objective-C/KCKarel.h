@@ -63,10 +63,4 @@ static KCCount const KCUnlimited = INT_MAX;
 - (BOOL)facingNorth;
 - (BOOL)facingSouth;
 
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> solution-assignment-3
 @end

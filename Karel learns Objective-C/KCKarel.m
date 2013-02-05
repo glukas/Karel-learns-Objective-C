@@ -197,21 +197,12 @@
 {
     return [self front].orientation == west;
 }
-<<<<<<< HEAD
 
 - (BOOL)facingNorth
 {
     return [self front].orientation == north;
 }
 
-=======
-
-- (BOOL)facingNorth
-{
-    return [self front].orientation == north;
-}
-
->>>>>>> solution-assignment-3
 - (BOOL)facingSouth
 {
     return [self front].orientation == south;
